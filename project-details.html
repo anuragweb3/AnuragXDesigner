@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details - Anurag Gupta</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .project-hero {
+            padding-top: 120px;
+            padding-bottom: 40px;
+            background-color: var(--clr-surface-light);
+            text-align: center;
+        }
+        .project-hero h1 {
+            font-size: 3rem;
+            margin-bottom: var(--space-sm);
+        }
+        .project-hero p {
+            color: var(--clr-text-muted);
+            font-size: 1.25rem;
+            margin-bottom: var(--space-lg);
+        }
+        .project-banner {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+        }
+        .project-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--space-xl) 0;
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--clr-text-muted);
+        }
+        .project-content h2 {
+            color: var(--clr-text-main);
+            margin: var(--space-lg) 0 var(--space-sm);
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            color: var(--clr-primary);
+            margin-bottom: var(--space-lg);
+            transition: var(--transition-fast);
+        }
+        .back-link:hover {
+            transform: translateX(-5px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Anurag Gupta</a>
+            <nav class="nav-links">
+                <a href="index.html#home">Home</a>
+                <a href="index.html#portfolio">Portfolio</a>
+                <a href="index.html#experience">Experience</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="project-hero">
+            <div class="container fade-up">
+                <a href="index.html#portfolio" class="back-link"><i class="ph ph-arrow-left"></i> Back to Portfolio</a>
+                <h1>GeM Platform Redesign</h1>
+                <p>Dashboard & CMS System Design</p>
+                <div class="project-banner">
+                    <img src="assets/images/project_dashboard.png" alt="GeM Project Banner">
+                </div>
+            </div>
+        </section>
+
+        <section class="section container">
+            <div class="project-content fade-up">
+                <h2>Overview</h2>
+                <p>The Government e-Marketplace (GeM) required a comprehensive redesign of its CMS and dashboard systems to improve usability for thousands of vendors and government buyers. The goal was to simplify complex data visualization and streamline the procurement workflow.</p>
+                
+                <h2>My Role</h2>
+                <p>As the lead UI/UX Designer, I was responsible for end-to-end design execution. This included stakeholder interviews, creating wireframes, establishing a new design system, and delivering high-fidelity prototypes for the engineering team.</p>
+                
+                <h2>Key Challenges</h2>
+                <p>Balancing the display of dense data with an approachable interface was the primary challenge. We needed to ensure that users with varying levels of technical proficiency could easily navigate the platform without feeling overwhelmed.</p>
+                
+                <h2>Results</h2>
+                <p>The redesign led to a 40% reduction in support tickets related to navigation and a significant improvement in task completion rates among newly onboarded vendors.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>&copy; 2026 Anurag Gupta. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="index.html#home">Home</a>
+                <a href="index.html#portfolio">Portfolio</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

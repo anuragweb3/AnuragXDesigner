@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anurag Gupta - UI/UX Designer</title>
+    <meta name="description" content="Portfolio of Anurag Gupta, UI/UX Designer & Creative Thinker.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Anurag Gupta</a>
+            <nav class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#experience">Experience</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content fade-up">
+                <h1 class="hero-title">Anurag Gupta</h1>
+                <h2 class="hero-subtitle">UI/UX Designer & Creative Thinker</h2>
+            </div>
+        </section>
+
+        <!-- Intro Section -->
+        <section class="intro section">
+            <div class="container fade-up">
+                <p class="intro-text">
+                    "Welcome to my portfolio! Here, you'll find a collection of my best UI/UX design projects that reflect my user-centered approach and creative process. Explore my work to understand how I tackle design challenges with innovative solutions and a focus on user experience."
+                </p>
+                <a href="https://drive.google.com/file/d/1hhRmmqqbLRMFHbzseMLHaR4ZiHRcJ4G5/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn btn-primary">View My Resume</a>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="portfolio section bg-light">
+            <div class="container">
+                <h2 class="section-title fade-up">My Works</h2>
+                <div class="project-grid">
+                    <!-- Project 1 -->
+                    <a href="project-details.html" class="project-card fade-up">
+                        <div class="project-image-wrapper">
+                            <img src="assets/images/project_dashboard.png" alt="GeM CMS Dashboard" class="project-image">
+                            <div class="project-overlay">
+                                <i class="ph ph-arrow-up-right"></i>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-tag">Dashboard</span>
+                            <h3 class="project-title">GeM Platform Redesign</h3>
+                        </div>
+                    </a>
+                    <!-- Project 2 -->
+                    <a href="project-details.html" class="project-card fade-up" style="transition-delay: 0.1s;">
+                        <div class="project-image-wrapper">
+                            <img src="assets/images/project_mobile.png" alt="Fintech Mobile App" class="project-image">
+                            <div class="project-overlay">
+                                <i class="ph ph-arrow-up-right"></i>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-tag">Mobile App</span>
+                            <h3 class="project-title">Fintech Mobile Wallet</h3>
+                        </div>
+                    </a>
+                    <!-- Project 3 -->
+                    <a href="project-details.html" class="project-card fade-up" style="transition-delay: 0.2s;">
+                        <div class="project-image-wrapper">
+                            <img src="assets/images/project_ux.png" alt="UX Case Study" class="project-image">
+                            <div class="project-overlay">
+                                <i class="ph ph-arrow-up-right"></i>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-tag">UX Case Study</span>
+                            <h3 class="project-title">Smart Home System</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="experience section">
+            <div class="container">
+                <h2 class="section-title fade-up">Experience</h2>
+                <div class="timeline">
+                    <!-- Item 1 -->
+                    <div class="timeline-item fade-up">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <h3 class="role">UI/UX Designer</h3>
+                                <span class="company">TCS</span>
+                            </div>
+                            <span class="date">2022 – Present</span>
+                            <p class="description">
+                                Working on the GeM platform, designing CMS, RMS, dashboards, and marketplace systems. Collaborated with clients and cross-functional teams to translate complex requirements into scalable, user-centric solutions.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="timeline-item fade-up">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <h3 class="role">AutoCAD Designer</h3>
+                                <span class="company">Star International Pvt. Ltd.</span>
+                            </div>
+                            <span class="date">Sep 2021 – Dec 2021</span>
+                            <p class="description">
+                                Designed precision-based technical drawings using AutoCAD and improved production efficiency by implementing CNC and automated sewing solutions.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact section bg-light">
+            <div class="container fade-up">
+                <h2 class="section-title">Contact Me</h2>
+                <div class="contact-wrapper">
+                    <form id="contact-form" class="contact-form">
+                        <div class="input-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required placeholder="John Doe">
+                        </div>
+                        <div class="input-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="john@example.com">
+                        </div>
+                        <div class="input-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Let's build something amazing together..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                    <div class="contact-info">
+                        <h3>Let's Connect</h3>
+                        <p>Feel free to reach out for collaborations or just a friendly hello.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-icon" aria-label="LinkedIn"><i class="ph ph-linkedin-logo"></i></a>
+                            <a href="#" class="social-icon" aria-label="Behance"><i class="ph ph-behance-logo"></i></a>
+                            <a href="#" class="social-icon" aria-label="Dribbble"><i class="ph ph-dribbble-logo"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>&copy; 2026 Anurag Gupta. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#portfolio">Portfolio</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
