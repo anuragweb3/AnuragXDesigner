@@ -431,12 +431,6 @@
                 </div>
 
                 <style>
-                    .zigzag-container {
-                        display: flex;
-                        flex-direction: column;
-                        gap: 2rem;
-                    }
-
                     .zigzag-row {
                         display: flex;
                         align-items: center;
@@ -444,17 +438,17 @@
                         margin-top: 3rem;
                     }
 
-                    .zigzag-container .zigzag-row:nth-child(even) {
+                    .zigzag-row:nth-child(even) {
                         flex-direction: row-reverse;
                     }
 
                     .zigzag-content {
-                        flex: 3;
+                        flex: 1;
                         min-width: 300px;
                     }
 
                     .zigzag-image {
-                        flex: 7;
+                        flex: 1;
                         min-width: 300px;
                         border-radius: var(--radius-lg);
                         overflow: hidden;
@@ -463,8 +457,9 @@
                     }
 
                     @media (max-width: 768px) {
+
                         .zigzag-row,
-                        .zigzag-container .zigzag-row:nth-child(even) {
+                        .zigzag-row:nth-child(even) {
                             flex-direction: column;
                             gap: 2rem;
                         }
@@ -473,7 +468,6 @@
 
                 <h2 style="margin-top: 4rem;">Unique Screens (Mock Up)</h2>
 
-                <div class="zigzag-container">
                 <div class="zigzag-row">
                     <div class="zigzag-image">
                         <img src="/Device1.png" alt="Book Marketplace"
@@ -541,7 +535,6 @@
                         <p style="font-size: 1.125rem; color: var(--clr-text-main); line-height: 1.6;">Book Catalog
                             creation form for Vendors.</p>
                     </div>
-                </div>
                 </div>
             </div>
         </section>
