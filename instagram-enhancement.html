@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,15 +15,18 @@
             background-color: var(--clr-surface-light);
             text-align: center;
         }
+
         .project-hero h1 {
             font-size: 3rem;
             margin-bottom: var(--space-sm);
         }
+
         .project-hero p {
             color: var(--clr-text-muted);
             font-size: 1.25rem;
             margin-bottom: var(--space-lg);
         }
+
         .project-banner {
             width: 100%;
             max-width: 1000px;
@@ -31,6 +35,7 @@
             box-shadow: var(--shadow-lg);
             overflow: hidden;
         }
+
         .project-content {
             max-width: 800px;
             margin: 0 auto;
@@ -39,10 +44,12 @@
             line-height: 1.8;
             color: var(--clr-text-muted);
         }
+
         .project-content h2 {
             color: var(--clr-text-main);
             margin: var(--space-lg) 0 var(--space-sm);
         }
+
         .back-link {
             display: inline-flex;
             align-items: center;
@@ -52,11 +59,13 @@
             margin-bottom: var(--space-lg);
             transition: var(--transition-fast);
         }
+
         .back-link:hover {
             transform: translateX(-5px);
         }
     </style>
 </head>
+
 <body>
     <!-- Navbar -->
     <header class="navbar">
@@ -75,29 +84,221 @@
         <section class="project-hero">
             <div class="container fade-up">
                 <div style="text-align: left; max-width: 1000px; margin: 0 auto; width: 100%;">
-                    <a href="index.html#portfolio" class="back-link"><i class="ph ph-arrow-left"></i> Back to Portfolio</a>
+                    <a href="index.html#portfolio" class="back-link"><i class="ph ph-arrow-left"></i> Back to
+                        Portfolio</a>
                 </div>
                 <h1>Product Enhancement</h1>
                 <p>Instagram Enhancement</p>
                 <div class="project-banner">
-                    <img src="project_mobile.png" alt="Instagram Enhancement Project Banner">
+                    <img src="/InstaCover.png" alt="Instagram Enhancement Project Banner">
                 </div>
             </div>
         </section>
 
         <section class="section container">
             <div class="project-content fade-up">
-                <h2>Overview</h2>
-                <p>The Government e-Marketplace (GeM) required a comprehensive redesign of its CMS and dashboard systems to improve usability for thousands of vendors and government buyers. The goal was to simplify complex data visualization and streamline the procurement workflow.</p>
+                <h2>Problem Statement</h2>
+                <p>
+                <ul>
+                    <li>Instagram Reels are super engaging — maybe too engaging. The endless scroll and constantly
+                        personalized videos make it really easy to lose track of time. A lot of people end up watching
+                        for way longer than they planned, which can mess with their sleep, focus, and overall mental
+                        health.</li>
+                    <li>The challenge is to come up with design ideas that help people use Reels more mindfully —
+                        without completely hurting Instagram’s business, which relies on people watching, sharing, and
+                        engaging with content regularly.</li>
+                </ul>
+                </p>
+
+                <h2>Solution</h2>
+                <p>
+                <ul>
+                    <li>Introduce a real-time usage timer in the Reels section to help users track how much time they
+                        spend watching Reels each day, with the timer resetting every 24 hours. Additionally, implement
+                        a Reels category filter to allow users to view content based on their selected interests,
+                        promoting more intentional and focused browsing.</li>
+                    <li>Applying a streak rule based on the watching time of Reels by category is a powerful way to
+                        increase user engagement and retention.</li>
+                    <li>streak 1 is given for >=5 Minutes in 24 hours</li>
+                    <li>Encourage users to continuously watch Reels from specific categories for a set duration per day,
+                        building habits and improving time spent on the platform.</li>
+                </ul>
+                </p>
                 
-                <h2>My Role</h2>
-                <p>As the lead UI/UX Designer, I was responsible for end-to-end design execution. This included stakeholder interviews, creating wireframes, establishing a new design system, and delivering high-fidelity prototypes for the engineering team.</p>
+                <h2 style="margin-top: 5rem;">Unique Screens (Mock Up)</h2>
                 
-                <h2>Key Challenges</h2>
-                <p>Balancing the display of dense data with an approachable interface was the primary challenge. We needed to ensure that users with varying levels of technical proficiency could easily navigate the platform without feeling overwhelmed.</p>
-                
-                <h2>Results</h2>
-                <p>The redesign led to a 40% reduction in support tickets related to navigation and a significant improvement in task completion rates among newly onboarded vendors.</p>
+                <style>
+                    .mockup-grid {
+                        display: grid;
+                        grid-template-columns: repeat(2, 1fr);
+                        gap: 3rem;
+                        margin-top: 2rem;
+                    }
+                    .mockup-card {
+                        background: #f8fafc;
+                        padding: 2.5rem;
+                        border-radius: var(--radius-lg);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 1.5rem;
+                        border: 1px solid var(--clr-border);
+                        transition: transform 0.3s ease;
+                    }
+                    .mockup-card:hover {
+                        transform: translateY(-5px);
+                        box-shadow: var(--shadow-md);
+                    }
+                    .mockup-image-wrapper {
+                        flex: 0 0 250px; 
+                        border-radius: 24px;
+                        overflow: hidden;
+                        box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+                        border: 6px solid #1c1c21;
+                        background: white;
+                    }
+                    .mockup-image-wrapper img {
+                        width: 100%;
+                        height: auto;
+                        display: block;
+                    }
+                    .annotation {
+                        flex: 1;
+                        display: flex;
+                        align-items: center;
+                    }
+                    .annotation-line {
+                        height: 1px;
+                        width: 40px;
+                        background-color: #94a3b8;
+                        position: relative;
+                    }
+                    .annotation-line::before {
+                        content: '';
+                        position: absolute;
+                        left: -4px;
+                        top: -3px;
+                        width: 7px;
+                        height: 7px;
+                        border-radius: 50%;
+                        background-color: #94a3b8;
+                    }
+                    .annotation-text {
+                        font-family: var(--font-main);
+                        font-weight: 500;
+                        font-size: 1.05rem;
+                        color: #64748b;
+                        margin-left: 1rem;
+                        letter-spacing: 0.5px;
+                        background: white;
+                        padding: 0.5rem 1rem;
+                        border-radius: 8px;
+                        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+                        border: 1px solid var(--clr-border);
+                    }
+                    @media (max-width: 992px) {
+                        .mockup-grid {
+                            grid-template-columns: 1fr;
+                        }
+                        .mockup-card {
+                            flex-direction: column;
+                            padding: 2rem;
+                        }
+                        .annotation {
+                            flex-direction: column;
+                            gap: 0.5rem;
+                        }
+                        .annotation-line {
+                            width: 1px;
+                            height: 30px;
+                        }
+                        .annotation-line::before {
+                            top: -4px;
+                            left: -3px;
+                        }
+                        .annotation-text {
+                            margin-left: 0;
+                        }
+                    }
+                </style>
+
+                <div class="mockup-grid">
+                    <div class="mockup-card">
+                        <div class="mockup-image-wrapper">
+                            <img src="RealTimer.png" alt="Real Timer Screen">
+                        </div>
+                        <div class="annotation">
+                            <div class="annotation-line"></div>
+                            <div class="annotation-text">Timer</div>
+                        </div>
+                    </div>
+
+                    <div class="mockup-card">
+                        <div class="mockup-image-wrapper">
+                            <img src="Category.png" alt="Category Filter Screen">
+                        </div>
+                        <div class="annotation">
+                            <div class="annotation-line"></div>
+                            <div class="annotation-text">Category</div>
+                        </div>
+                    </div>
+
+                    <div class="mockup-card">
+                        <div class="mockup-image-wrapper">
+                            <img src="ScrollingCategory.png" alt="Scrolling Category Screen">
+                        </div>
+                        <div class="annotation">
+                            <div class="annotation-line"></div>
+                            <div class="annotation-text">Scrolling Category</div>
+                        </div>
+                    </div>
+
+                    <div class="mockup-card">
+                        <div class="mockup-image-wrapper">
+                            <img src="Category22.png" alt="Category Detail Screen">
+                        </div>
+                    </div>
+
+                    <div class="mockup-card">
+                        <div class="mockup-image-wrapper">
+                            <img src="StreakL.png" alt="Streak on Profile List Screen">
+                        </div>
+                        <div class="annotation">
+                            <div class="annotation-line"></div>
+                            <div class="annotation-text">Streak on Profile</div>
+                        </div>
+                    </div>
+
+                    <div class="mockup-card">
+                        <div class="mockup-image-wrapper">
+                            <img src="StreakO.png" alt="Streak on Profile Details Screen">
+                        </div>
+                        <div class="annotation">
+                            <div class="annotation-line"></div>
+                            <div class="annotation-text">Streak on Profile</div>
+                        </div>
+                    </div>
+
+                    <div class="mockup-card">
+                        <div class="mockup-image-wrapper">
+                            <img src="StreakAdd.png" alt="Add Streak Categories Screen">
+                        </div>
+                        <div class="annotation">
+                            <div class="annotation-line"></div>
+                            <div class="annotation-text">Add Streak Categories</div>
+                        </div>
+                    </div>
+
+                    <div class="mockup-card">
+                        <div class="mockup-image-wrapper">
+                            <img src="StreakSelect.png" alt="Streak Category Selection Screen">
+                        </div>
+                        <div class="annotation">
+                            <div class="annotation-line"></div>
+                            <div class="annotation-text">Category Selection</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -114,4 +315,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
