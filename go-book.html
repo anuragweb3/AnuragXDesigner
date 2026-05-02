@@ -419,6 +419,93 @@
                         <img src="/wire7.jpeg" alt="Wireframe 7" style="width: 100%; height: auto; display: block;">
                     </div>
                 </div>
+
+                <style>
+                    .zigzag-row {
+                        display: flex;
+                        align-items: center;
+                        gap: 4rem;
+                        margin-top: 3rem;
+                    }
+                    .zigzag-row:nth-child(even) {
+                        flex-direction: row-reverse;
+                    }
+                    .zigzag-content {
+                        flex: 1;
+                        min-width: 300px;
+                    }
+                    .zigzag-image {
+                        flex: 1;
+                        min-width: 300px;
+                        border-radius: var(--radius-lg);
+                        overflow: hidden;
+                        box-shadow: var(--shadow-md);
+                        border: 1px solid var(--clr-surface-dark);
+                    }
+                    @media (max-width: 768px) {
+                        .zigzag-row, .zigzag-row:nth-child(even) {
+                            flex-direction: column;
+                            gap: 2rem;
+                        }
+                    }
+                </style>
+
+                <h2 style="margin-top: 4rem;">Unique Screens (Mock Up)</h2>
+                
+                <div class="zigzag-row">
+                    <div class="zigzag-image">
+                        <img src="Device1.png" alt="Book Marketplace" style="width: 100%; height: auto; display: block;">
+                    </div>
+                    <div class="zigzag-content">
+                        <p style="font-size: 1.125rem; color: var(--clr-text-main); line-height: 1.6;">Book Marketplace for Users to search the books and take action.</p>
+                    </div>
+                </div>
+
+                <div class="zigzag-row">
+                    <div class="zigzag-image">
+                        <img src="Device2.png" alt="Admin Dashboard" style="width: 100%; height: auto; display: block;">
+                    </div>
+                    <div class="zigzag-content">
+                        <p style="font-size: 1.125rem; color: var(--clr-text-main); line-height: 1.6;">Admin Dashboard to preview and add new catalogue or enable/disable the existing catalogue.</p>
+                    </div>
+                </div>
+
+                <div class="zigzag-row">
+                    <div class="zigzag-image">
+                        <img src="Device3.png" alt="Book Detailed preview" style="width: 100%; height: auto; display: block;">
+                    </div>
+                    <div class="zigzag-content">
+                        <p style="font-size: 1.125rem; color: var(--clr-text-main); line-height: 1.6;">Book Detailed preview for users and take action (Buy, Rent and Add to Cart)</p>
+                    </div>
+                </div>
+
+                <div class="zigzag-row">
+                    <div class="zigzag-image">
+                        <img src="Device4.png" alt="Vendor Dashboard" style="width: 100%; height: auto; display: block;">
+                    </div>
+                    <div class="zigzag-content">
+                        <p style="font-size: 1.125rem; color: var(--clr-text-main); line-height: 1.6;">Dashboard for Vendor to track the user requests and their status.</p>
+                    </div>
+                </div>
+
+                <div class="zigzag-row">
+                    <div class="zigzag-image">
+                        <img src="Device5.png" alt="User Request Preview" style="width: 100%; height: auto; display: block;">
+                    </div>
+                    <div class="zigzag-content">
+                        <p style="font-size: 1.125rem; color: var(--clr-text-main); line-height: 1.6;">User's request preview for Vendor to see the user details, deliver details and book details.</p>
+                        <p style="font-size: 1.125rem; color: var(--clr-text-main); line-height: 1.6; margin-top: 1rem;">Vendor can accept, decline, sent back and reassign the reque.</p>
+                    </div>
+                </div>
+
+                <div class="zigzag-row">
+                    <div class="zigzag-image">
+                        <img src="Device6.png" alt="Book Catalog creation form" style="width: 100%; height: auto; display: block;">
+                    </div>
+                    <div class="zigzag-content">
+                        <p style="font-size: 1.125rem; color: var(--clr-text-main); line-height: 1.6;">Book Catalog creation form for Vendors.</p>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
