@@ -140,9 +140,6 @@
                         object-fit: cover;
                         object-position: top;
                         display: block;
-                        border-radius: 12px;
-                        box-shadow: var(--shadow-sm);
-                        border: 1px solid var(--clr-border);
                     }
                     .labels-col {
                         display: flex;
@@ -190,9 +187,9 @@
                         font-family: var(--font-main);
                         font-weight: 500;
                         font-size: 0.95rem;
-                        color: #475569;
+                        color: var(--clr-text-main);
                         padding: 0.5rem 1rem;
-                        background: white;
+                        background: var(--clr-surface);
                         border-radius: 8px;
                         border: 1px solid var(--clr-border);
                         white-space: nowrap;
@@ -224,8 +221,8 @@
                             font-family: var(--font-main);
                             font-weight: 500;
                             font-size: 1rem;
-                            color: #475569;
-                            background: white;
+                            color: var(--clr-text-main);
+                            background: var(--clr-surface);
                             padding: 0.5rem 1.5rem;
                             border-radius: 8px;
                             border: 1px solid var(--clr-border);
@@ -239,7 +236,7 @@
                     <div class="screen-pair">
                         <div class="screen-wrapper" style="justify-content: flex-end;">
                             <div class="screen-inner">
-                                <img class="screen-img" src="/RealTimer.png" alt="Real Timer Screen">
+                                <img class="screen-img" src="/Timer.png" alt="Timer Screen">
                                 <div class="mobile-label">Timer</div>
                             </div>
                         </div>
@@ -355,7 +352,7 @@
                             display: flex;
                             align-items: flex-start;
                             gap: 1.5rem;
-                            background: white;
+                            background: var(--clr-surface);
                             padding: 2rem;
                             border-radius: var(--radius-lg, 12px);
                             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
@@ -464,7 +461,7 @@
                         margin-top: 5rem;
                     }
                     .assets-container {
-                        background: white;
+                        background: var(--clr-surface);
                         padding: 3rem;
                         border-radius: var(--radius-lg, 12px);
                         display: flex;
