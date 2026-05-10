@@ -528,6 +528,193 @@
             }
             .sol-art { width: 220px; height: 220px; }
         }
+        /* Goals Storytelling Styles */
+        .goals-showcase {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            position: relative;
+            margin-top: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .goals-showcase::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 2rem;
+            bottom: 2rem;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, var(--clr-border), transparent);
+            transform: translateX(-50%);
+            z-index: 0;
+        }
+
+        .goal-card {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.4s ease;
+        }
+
+        .goal-card:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .goal-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .goal-content {
+            flex: 1;
+            background: var(--clr-surface);
+            padding: 2.5rem;
+            border-radius: 24px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--clr-border);
+            position: relative;
+            overflow: hidden;
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .goal-content:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--clr-primary);
+        }
+
+        .goal-bg {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.1;
+            z-index: 0;
+            top: -50px;
+            right: -50px;
+        }
+
+        .goal-text-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+
+        .goal-icon-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            background: var(--clr-surface-light);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .goal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--clr-text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        .goal-subtitle {
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+        }
+
+        .goal-desc {
+            color: var(--clr-text-muted);
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+
+        .goal-connector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: var(--clr-surface);
+            border: 2px solid var(--clr-border);
+            border-radius: 50%;
+            font-size: 1.5rem;
+            color: var(--clr-text-muted);
+            z-index: 2;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .goal-visual {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .goal-art-box {
+            position: relative;
+            width: 220px;
+            height: 220px;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(-3deg);
+            transition: transform 0.4s ease;
+            box-shadow: 0 15px 35px -5px rgba(0,0,0,0.1);
+        }
+        [data-theme="dark"] .goal-art-box {
+            background: rgba(30, 30, 35, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .goal-card:hover .goal-art-box {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .goal-mini-icon {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: var(--clr-surface);
+            border: 1px solid var(--clr-border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            animation: float-panel 4s infinite ease-in-out alternate;
+        }
+
+        @media (max-width: 992px) {
+            .goals-showcase::before {
+                left: 24px;
+            }
+            .goal-card, .goal-card:nth-child(even) {
+                flex-direction: row;
+                gap: 1.5rem;
+            }
+            .goal-visual {
+                display: none;
+            }
+            .goal-connector {
+                width: 32px;
+                height: 32px;
+                font-size: 1rem;
+                flex-shrink: 0;
+            }
+        }
     </style>
 </head>
 
@@ -598,13 +785,75 @@
                     <li style="margin-bottom: 0.5rem;">Selling easily</li>
                 </ul>
 
-                <h2>Goals</h2>
-                <p>Design a unified book marketplace that allows users to-</p>
-                <ul style="padding-left: 1.2rem; margin-bottom: 1.5rem;">
-                    <li style="margin-bottom: 0.5rem;"><b>Buy new & old books</b></li>
-                    <li style="margin-bottom: 0.5rem;"><b>Rent books easily</b></li>
-                    <li style="margin-bottom: 0.5rem;"><b>Sell books to vendors or other users</b></li>
-                </ul>
+                <h2 style="margin-top: 5rem; margin-bottom: 1rem;">Project Goals</h2>
+                <p style="color: var(--clr-text-muted); font-size: 1.125rem; line-height: 1.6; max-width: 800px;">To design a unified book marketplace that breaks down barriers between readers and knowledge, allowing users to effortlessly buy, rent, and sell books.</p>
+
+                <div class="goals-showcase">
+                    
+                    <!-- Goal 1 -->
+                    <div class="goal-card fade-up">
+                        <div class="goal-content">
+                            <div class="goal-bg" style="background: #2563EB;"></div>
+                            <div class="goal-text-wrapper">
+                                <div class="goal-icon-wrapper" style="color: #2563EB;"><i class="ph-fill ph-books"></i></div>
+                                <h3 class="goal-title">Buy New & Old Books</h3>
+                                <div class="goal-subtitle" style="color: #2563EB;">Affordable access to knowledge</div>
+                                <p class="goal-desc">Curate a vast, reliable collection where users can discover and purchase both brand-new releases and carefully inspected pre-owned books with complete confidence.</p>
+                            </div>
+                        </div>
+                        <div class="goal-connector"><i class="ph-bold ph-arrow-down"></i></div>
+                        <div class="goal-visual">
+                            <div class="goal-art-box">
+                                <i class="ph-fill ph-shopping-bag-open" style="font-size: 4rem; color: #2563EB;"></i>
+                                <div class="goal-mini-icon" style="top: -15px; left: 20px; animation-delay: 0s; color: #F59E0B;"><i class="ph-bold ph-star"></i></div>
+                                <div class="goal-mini-icon" style="bottom: -15px; right: 20px; animation-delay: -2s; color: #10B981;"><i class="ph-bold ph-tag"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Goal 2 -->
+                    <div class="goal-card fade-up">
+                        <div class="goal-connector"><i class="ph-bold ph-arrow-down"></i></div>
+                        <div class="goal-content">
+                            <div class="goal-bg" style="background: #10B981;"></div>
+                            <div class="goal-text-wrapper">
+                                <div class="goal-icon-wrapper" style="color: #10B981;"><i class="ph-fill ph-calendar-check"></i></div>
+                                <h3 class="goal-title">Rent Books Easily</h3>
+                                <div class="goal-subtitle" style="color: #10B981;">Flexible reading experience</div>
+                                <p class="goal-desc">Provide an affordable alternative for students and casual readers to rent books for short durations, ensuring knowledge is accessible without the commitment of ownership.</p>
+                            </div>
+                        </div>
+                        <div class="goal-visual">
+                            <div class="goal-art-box" style="transform: rotate(3deg);">
+                                <i class="ph-fill ph-clock-counter-clockwise" style="font-size: 4rem; color: #10B981;"></i>
+                                <div class="goal-mini-icon" style="top: 20px; right: -20px; animation-delay: -1s; color: #2563EB;"><i class="ph-bold ph-book-open"></i></div>
+                                <div class="goal-mini-icon" style="bottom: 20px; left: -10px; animation-delay: -3s; color: #EC4899;"><i class="ph-bold ph-wallet"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Goal 3 -->
+                    <div class="goal-card fade-up">
+                        <div class="goal-content">
+                            <div class="goal-bg" style="background: #F97316;"></div>
+                            <div class="goal-text-wrapper">
+                                <div class="goal-icon-wrapper" style="color: #F97316;"><i class="ph-fill ph-storefront"></i></div>
+                                <h3 class="goal-title">Sell Without Friction</h3>
+                                <div class="goal-subtitle" style="color: #F97316;">Give books a second life</div>
+                                <p class="goal-desc">Enable a seamless, trustworthy selling experience where users can effortlessly list their read books, connect with eager buyers, or sell directly to verified vendors.</p>
+                            </div>
+                        </div>
+                        <div class="goal-connector" style="color: #10B981; border-color: #10B981;"><i class="ph-bold ph-check"></i></div>
+                        <div class="goal-visual">
+                            <div class="goal-art-box">
+                                <i class="ph-fill ph-hand-coins" style="font-size: 4rem; color: #F97316;"></i>
+                                <div class="goal-mini-icon" style="top: -10px; left: 40px; animation-delay: -0.5s; color: #10B981;"><i class="ph-bold ph-trend-up"></i></div>
+                                <div class="goal-mini-icon" style="bottom: 10px; right: -10px; animation-delay: -2.5s; color: #2563EB;"><i class="ph-bold ph-users"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
 
                 <h2>Target Users</h2>
                 <div
