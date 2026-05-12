@@ -9,45 +9,181 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
-        .project-hero {
-            padding-top: 120px;
-            padding-bottom: 40px;
-            background-color: var(--clr-surface-light);
-            text-align: center;
-        }
-
-        .project-hero h1 {
-            font-size: 3rem;
-            margin-bottom: var(--space-sm);
-        }
-
-        .project-hero p {
-            color: var(--clr-text-muted);
-            font-size: 1.25rem;
-            margin-bottom: var(--space-lg);
-        }
-
-        .project-banner {
-            width: 100%;
-            max-width: 100%;
-            margin: 0 auto;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-lg);
-            overflow: hidden;
-            background-color: var(--clr-surface-light);
+        /* Immersive Hero Styles */
+        .hero-immersive {
+            position: relative;
+            min-height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            border: 1px solid var(--clr-border);
+            padding-top: 80px;
+            padding-bottom: 80px;
+            overflow: hidden;
+            text-align: left;
+            background-color: var(--clr-bg);
+            margin-top: -80px; /* Offset for fixed navbar */
         }
 
-        .project-banner img {
-            max-width: 100%;
-            height: auto;
-            object-fit: contain;
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-sm);
+        .hero-bg-container {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0; overflow: hidden;
+        }
+
+        .hero-bg-image {
+            position: absolute;
+            top: -5%; left: -5%; width: 110%; height: 110%;
+            background-image: url('GeminiBook.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: blur(10px) brightness(0.9);
+            animation: subtleParallax 20s infinite alternate ease-in-out;
+            transform: scale(1.05);
+        }
+
+        [data-theme="dark"] .hero-bg-image {
+            filter: blur(10px) brightness(0.5);
+        }
+
+        @keyframes subtleParallax {
+            0% { transform: scale(1.05) translate(0, 0); }
+            100% { transform: scale(1.1) translate(-1%, -1%); }
+        }
+
+        .hero-bg-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(250, 250, 252, 0.4) 0%,
+                rgba(250, 250, 252, 0.85) 60%,
+                var(--clr-bg) 100%
+            );
+            z-index: 1;
+        }
+
+        [data-theme="dark"] .hero-bg-overlay {
+            background: linear-gradient(
+                to bottom,
+                rgba(18, 18, 18, 0.4) 0%,
+                rgba(18, 18, 18, 0.8) 60%,
+                var(--clr-bg) 100%
+            );
+        }
+
+        .hero-ambient-glow {
+            position: absolute;
+            top: 30%; left: 50%; transform: translate(-50%, -50%);
+            width: 80vw; height: 60vh;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, rgba(249, 115, 22, 0.05) 50%, transparent 70%);
+            filter: blur(60px); z-index: 1; border-radius: 50%;
+            animation: pulseGlow 8s infinite alternate;
+        }
+
+        [data-theme="dark"] .hero-ambient-glow {
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.2) 0%, rgba(249, 115, 22, 0.1) 50%, transparent 70%);
+        }
+
+        @keyframes pulseGlow {
+            0% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+            100% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        .hero-content-wrapper {
+            position: relative; z-index: 2; width: 100%; display: flex; flex-direction: column; gap: 2rem; padding-top: 60px;
+        }
+
+        .hero-nav { margin-bottom: 1rem; }
+
+        .back-link-immersive {
+            color: var(--clr-text-main);
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            padding: 0.5rem 1.25rem; border-radius: 99px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link-immersive:hover {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--clr-primary);
+            transform: translateX(-5px);
+        }
+
+        [data-theme="dark"] .back-link-immersive {
+            color: rgba(255, 255, 255, 0.9);
+            background: rgba(30, 30, 30, 0.4);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        [data-theme="dark"] .back-link-immersive:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+
+        .hero-main-content { max-width: 800px; }
+
+        .hero-badge {
+            display: inline-block; padding: 0.4rem 1rem;
+            background: rgba(37, 99, 235, 0.1); border: 1px solid rgba(37, 99, 235, 0.2);
+            color: #2563EB; border-radius: 99px; font-size: 0.875rem; font-weight: 600;
+            letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1.5rem; backdrop-filter: blur(4px);
+        }
+
+        [data-theme="dark"] .hero-badge {
+            background: rgba(37, 99, 235, 0.2); border-color: rgba(37, 99, 235, 0.3); color: #93C5FD;
+        }
+
+        .hero-title {
+            font-size: clamp(3.5rem, 6vw, 5.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem;
+            color: var(--clr-text-main); letter-spacing: -1.5px;
+        }
+
+        [data-theme="dark"] .hero-title {
+            color: #ffffff; text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .hero-description {
+            font-size: clamp(1.125rem, 2vw, 1.35rem); line-height: 1.6; color: var(--clr-text-muted); margin-bottom: 3rem; max-width: 600px;
+        }
+
+        [data-theme="dark"] .hero-description {
+            color: rgba(255, 255, 255, 0.85); text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .hero-meta {
+            display: flex; flex-wrap: wrap; gap: 3rem; margin-bottom: 3.5rem; padding-top: 2rem; border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] .hero-meta { border-top-color: rgba(255, 255, 255, 0.15); }
+
+        .meta-item { display: flex; flex-direction: column; gap: 0.5rem; }
+
+        .meta-label { font-size: 0.875rem; color: var(--clr-text-muted); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+
+        [data-theme="dark"] .meta-label { color: rgba(255, 255, 255, 0.6); }
+
+        .meta-value { font-size: 1.125rem; color: var(--clr-text-main); font-weight: 500; }
+
+        [data-theme="dark"] .meta-value { color: #ffffff; }
+
+        .hero-actions { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+
+        .btn-glow { box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4); }
+        .btn-glow:hover { box-shadow: 0 15px 35px -5px rgba(37, 99, 235, 0.5); }
+
+        .hero-bottom-fade {
+            position: absolute; bottom: 0; left: 0; width: 100%; height: 150px;
+            background: linear-gradient(to top, var(--clr-bg) 0%, transparent 100%); z-index: 1; pointer-events: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.75rem; }
+            .hero-meta { gap: 1.5rem; flex-direction: column; }
+            .hero-actions { flex-direction: column; width: 100%; }
+            .hero-actions .btn { width: 100%; }
+            .hero-immersive { min-height: auto; padding-top: 120px; padding-bottom: 60px; }
         }
 
         .project-content {
@@ -738,18 +874,44 @@
     </header>
 
     <main>
-        <section class="project-hero">
-            <div class="container fade-up">
-                <div style="text-align: left; max-width: 100%; margin: 0 auto; width: 100%;">
-                    <a href="index.html#portfolio" class="back-link"><i class="ph ph-arrow-left"></i> Back to
-                        Portfolio</a>
+        <section class="project-hero hero-immersive">
+            <div class="hero-bg-container">
+                <div class="hero-bg-image"></div>
+                <div class="hero-bg-overlay"></div>
+                <div class="hero-ambient-glow"></div>
+            </div>
+            
+            <div class="container fade-up hero-content-wrapper">
+                <div class="hero-nav">
+                    <a href="index.html#portfolio" class="back-link back-link-immersive"><i class="ph ph-arrow-left"></i> Back to Portfolio</a>
                 </div>
-                <h1>Go Book Marketplace</h1>
-                <p>Request Management System (RMS)</p>
-                <div class="project-banner">
-                    <img src="go_book_marketplace.png" alt="Go Book Marketplace Project Banner">
+                
+                <div class="hero-main-content">
+                    <div class="hero-badge">Case Study</div>
+                    <h1 class="hero-title">Go Book</h1>
+                    <p class="hero-description">A unified marketplace for buying, renting, and selling books with a seamless user experience.</p>
+                    
+                    <div class="hero-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Role</span>
+                            <span class="meta-value">UX/UI Designer</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Duration</span>
+                            <span class="meta-value">4 Weeks</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Tools</span>
+                            <span class="meta-value">Figma, Miro, Notion</span>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-actions">
+                        <a href="#project-details" class="btn btn-primary btn-glow">View Case Study</a>
+                    </div>
                 </div>
             </div>
+            <div class="hero-bottom-fade"></div>
         </section>
 
         <section class="section container">
