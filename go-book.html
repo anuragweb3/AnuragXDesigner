@@ -9,181 +9,400 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
-        /* Immersive Hero Styles */
-        .hero-immersive {
+        /* Premium Hero Section */
+        .premium-hero {
             position: relative;
-            min-height: 100vh;
+            width: 100%;
+            min-height: 75vh;
+            background-color: var(--clr-bg);
+            border-bottom: 1px solid var(--clr-border);
+            padding-top: 80px; /* Space for the navbar */
+            overflow: hidden;
             display: flex;
             align-items: center;
-            padding-top: 80px;
-            padding-bottom: 80px;
+            justify-content: center;
+        }
+
+        /* Abstract Background Effects */
+        .hero-bg-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             overflow: hidden;
-            text-align: left;
-            background-color: var(--clr-bg);
-            margin-top: -80px; /* Offset for fixed navbar */
+            z-index: 0;
+            pointer-events: none;
         }
 
-        .hero-bg-container {
+        .ambient-glow {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 0; overflow: hidden;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.5;
+            animation: float-glow 15s infinite ease-in-out alternate;
         }
 
-        .hero-bg-image {
+        .glow-1 { top: -20%; left: -10%; width: 600px; height: 600px; background: rgba(37, 99, 235, 0.2); animation-delay: 0s; }
+        .glow-2 { bottom: -20%; right: -10%; width: 500px; height: 500px; background: rgba(124, 58, 237, 0.2); animation-delay: -5s; }
+        .glow-3 { top: 30%; left: 40%; width: 400px; height: 400px; background: rgba(16, 185, 129, 0.15); animation-delay: -10s; }
+
+        @keyframes float-glow {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(40px, 40px) scale(1.1); }
+        }
+
+        [data-theme="dark"] .ambient-glow {
+            opacity: 0.3;
+        }
+
+        .hero-top-nav {
             position: absolute;
-            top: -5%; left: -5%; width: 110%; height: 110%;
-            background-image: url('GeminiBook.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            filter: blur(10px) brightness(0.9);
-            animation: subtleParallax 20s infinite alternate ease-in-out;
-            transform: scale(1.05);
-        }
-
-        [data-theme="dark"] .hero-bg-image {
-            filter: blur(10px) brightness(0.5);
-        }
-
-        @keyframes subtleParallax {
-            0% { transform: scale(1.05) translate(0, 0); }
-            100% { transform: scale(1.1) translate(-1%, -1%); }
-        }
-
-        .hero-bg-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(
-                to bottom,
-                rgba(250, 250, 252, 0.4) 0%,
-                rgba(250, 250, 252, 0.85) 60%,
-                var(--clr-bg) 100%
-            );
-            z-index: 1;
-        }
-
-        [data-theme="dark"] .hero-bg-overlay {
-            background: linear-gradient(
-                to bottom,
-                rgba(18, 18, 18, 0.4) 0%,
-                rgba(18, 18, 18, 0.8) 60%,
-                var(--clr-bg) 100%
-            );
-        }
-
-        .hero-ambient-glow {
-            position: absolute;
-            top: 30%; left: 50%; transform: translate(-50%, -50%);
-            width: 80vw; height: 60vh;
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, rgba(249, 115, 22, 0.05) 50%, transparent 70%);
-            filter: blur(60px); z-index: 1; border-radius: 50%;
-            animation: pulseGlow 8s infinite alternate;
-        }
-
-        [data-theme="dark"] .hero-ambient-glow {
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.2) 0%, rgba(249, 115, 22, 0.1) 50%, transparent 70%);
-        }
-
-        @keyframes pulseGlow {
-            0% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
-            100% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
-        }
-
-        .hero-content-wrapper {
-            position: relative; z-index: 2; width: 100%; display: flex; flex-direction: column; gap: 2rem; padding-top: 60px;
-        }
-
-        .hero-nav { margin-bottom: 1rem; }
-
-        .back-link-immersive {
-            color: var(--clr-text-main);
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-            padding: 0.5rem 1.25rem; border-radius: 99px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 600;
-            transition: all 0.3s ease;
+            top: 100px;
+            left: 2rem;
+            z-index: 10;
         }
         
-        .back-link-immersive:hover {
-            background: rgba(255, 255, 255, 0.9);
-            color: var(--clr-primary);
-            transform: translateX(-5px);
+        .hero-top-nav .back-link {
+            background: rgba(255, 255, 255, 0.85);
+            color: var(--clr-text-main);
+            padding: 0.75rem 1.5rem;
+            border-radius: 99px;
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--clr-border);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
         }
-
-        [data-theme="dark"] .back-link-immersive {
-            color: rgba(255, 255, 255, 0.9);
-            background: rgba(30, 30, 30, 0.4);
+        
+        [data-theme="dark"] .hero-top-nav .back-link {
+            background: rgba(30, 30, 35, 0.85);
+            color: #fff;
             border-color: rgba(255, 255, 255, 0.1);
         }
-        
-        [data-theme="dark"] .back-link-immersive:hover {
-            background: rgba(255, 255, 255, 0.2);
+
+        .hero-top-nav .back-link:hover {
+            transform: translateX(-5px);
+            background: var(--clr-primary);
             color: #fff;
+            border-color: var(--clr-primary);
+            box-shadow: var(--shadow-md);
         }
 
-        .hero-main-content { max-width: 800px; }
-
-        .hero-badge {
-            display: inline-block; padding: 0.4rem 1rem;
-            background: rgba(37, 99, 235, 0.1); border: 1px solid rgba(37, 99, 235, 0.2);
-            color: #2563EB; border-radius: 99px; font-size: 0.875rem; font-weight: 600;
-            letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1.5rem; backdrop-filter: blur(4px);
+        /* Hero Container Layout */
+        .hero-container {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            padding: 2rem 0;
+            width: 100%;
         }
 
-        [data-theme="dark"] .hero-badge {
-            background: rgba(37, 99, 235, 0.2); border-color: rgba(37, 99, 235, 0.3); color: #93C5FD;
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
         }
 
+        /* Metadata Chips */
+        .meta-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .chip {
+            background: var(--clr-surface);
+            border: 1px solid var(--clr-border);
+            padding: 0.4rem 1rem;
+            border-radius: 99px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--clr-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: var(--shadow-sm);
+            backdrop-filter: blur(8px);
+        }
+        
+        [data-theme="dark"] .chip {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Typography */
         .hero-title {
-            font-size: clamp(3.5rem, 6vw, 5.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem;
-            color: var(--clr-text-main); letter-spacing: -1.5px;
+            font-size: clamp(3.5rem, 6vw, 5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+            color: var(--clr-text-main);
+            margin: 0;
         }
 
-        [data-theme="dark"] .hero-title {
-            color: #ffffff; text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        .highlight-text {
+            background: linear-gradient(135deg, #2563EB, #7C3AED);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        [data-theme="dark"] .highlight-text {
+            background: linear-gradient(135deg, #60A5FA, #A78BFA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.25rem, 2vw, 1.75rem);
+            font-weight: 500;
+            color: var(--clr-text-main);
+            margin: 0;
+            opacity: 0.9;
         }
 
         .hero-description {
-            font-size: clamp(1.125rem, 2vw, 1.35rem); line-height: 1.6; color: var(--clr-text-muted); margin-bottom: 3rem; max-width: 600px;
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--clr-text-muted);
+            max-width: 90%;
+            margin: 0;
         }
 
-        [data-theme="dark"] .hero-description {
-            color: rgba(255, 255, 255, 0.85); text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        /* Visuals / Floating Elements */
+        .hero-visuals {
+            position: relative;
+            height: 500px;
+            width: 100%;
+            perspective: 1000px;
         }
 
-        .hero-meta {
-            display: flex; flex-wrap: wrap; gap: 3rem; margin-bottom: 3.5rem; padding-top: 2rem; border-top: 1px solid rgba(0, 0, 0, 0.1);
+        .floating-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        [data-theme="dark"] .hero-meta { border-top-color: rgba(255, 255, 255, 0.15); }
+        [data-theme="dark"] .floating-card {
+            background: rgba(30, 30, 35, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+        }
 
-        .meta-item { display: flex; flex-direction: column; gap: 0.5rem; }
+        .floating-card:hover {
+            transform: translateY(-10px) scale(1.02) !important;
+            box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.15);
+            z-index: 10;
+        }
 
-        .meta-label { font-size: 0.875rem; color: var(--clr-text-muted); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+        .card-1 {
+            top: 10%;
+            left: 10%;
+            width: 280px;
+            animation: float-panel 7s infinite ease-in-out alternate;
+            z-index: 3;
+        }
 
-        [data-theme="dark"] .meta-label { color: rgba(255, 255, 255, 0.6); }
+        .card-2 {
+            top: 40%;
+            right: 0%;
+            width: 320px;
+            animation: float-panel 8s infinite ease-in-out alternate-reverse;
+            z-index: 2;
+        }
 
-        .meta-value { font-size: 1.125rem; color: var(--clr-text-main); font-weight: 500; }
+        .card-3 {
+            bottom: 5%;
+            left: 20%;
+            width: 260px;
+            animation: float-panel 6s infinite ease-in-out alternate;
+            animation-delay: -3s;
+            z-index: 1;
+        }
 
-        [data-theme="dark"] .meta-value { color: #ffffff; }
+        /* Card Internals */
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            color: var(--clr-text-main);
+        }
 
-        .hero-actions { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .card-line {
+            height: 8px;
+            background: var(--clr-border);
+            border-radius: 4px;
+            margin-bottom: 0.75rem;
+        }
 
-        .btn-glow { box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4); }
-        .btn-glow:hover { box-shadow: 0 15px 35px -5px rgba(37, 99, 235, 0.5); }
+        .w-full { width: 100%; }
+        .w-3\/4 { width: 75%; }
 
-        .hero-bottom-fade {
-            position: absolute; bottom: 0; left: 0; width: 100%; height: 150px;
-            background: linear-gradient(to top, var(--clr-bg) 0%, transparent 100%); z-index: 1; pointer-events: none;
+        .card-footer {
+            margin-top: 1.25rem;
+            padding-top: 1rem;
+            border-top: 1px dashed var(--clr-border);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 99px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .status-badge.pending {
+            background: rgba(245, 158, 11, 0.1);
+            color: #F59E0B;
+        }
+
+        .card-flex {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 0.5rem;
+            text-align: center;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .action-btn.accept {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10B981;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+        .action-btn.accept:hover { background: #10B981; color: white; }
+
+        .action-btn.reject {
+            background: rgba(239, 68, 68, 0.1);
+            color: #EF4444;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+        .action-btn.reject:hover { background: #EF4444; color: white; }
+
+        .stats-row {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .stat-val {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--clr-text-main);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--clr-text-muted);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* Abstract Shapes */
+        .abstract-shape {
+            position: absolute;
+            background: linear-gradient(135deg, var(--clr-primary), #06B6D4);
+            opacity: 0.1;
+            z-index: 0;
+            border-radius: 50%;
+        }
+
+        .shape-circle {
+            width: 150px;
+            height: 150px;
+            top: 20%;
+            right: 10%;
+            animation: float-panel 10s infinite linear;
+        }
+
+        .shape-ring {
+            width: 200px;
+            height: 200px;
+            bottom: 10%;
+            left: 0;
+            border: 4px solid var(--clr-primary);
+            background: transparent;
+            opacity: 0.15;
+            animation: pulse 4s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.15; }
+            50% { transform: scale(1.05); opacity: 0.25; }
+            100% { transform: scale(1); opacity: 0.15; }
+        }
+
+        /* Responsive Hero */
+        @media (max-width: 992px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                padding: 1.5rem 0;
+                text-align: center;
+            }
+
+            .hero-content {
+                align-items: center;
+            }
+
+            .meta-chips {
+                justify-content: center;
+            }
+
+            .hero-description {
+                margin: 0 auto;
+            }
+
+            .hero-visuals {
+                height: 400px;
+                transform: scale(0.9);
+            }
+            
+            .hero-top-nav {
+                top: 80px;
+                left: 1rem;
+            }
         }
 
         @media (max-width: 768px) {
-            .hero-title { font-size: 2.75rem; }
-            .hero-meta { gap: 1.5rem; flex-direction: column; }
-            .hero-actions { flex-direction: column; width: 100%; }
-            .hero-actions .btn { width: 100%; }
-            .hero-immersive { min-height: auto; padding-top: 120px; padding-bottom: 60px; }
+            .hero-title { font-size: 3rem; }
+            .hero-visuals { transform: scale(0.7); height: 300px; margin-top: -2rem;}
+            .card-2 { right: -5%; }
+            .card-1 { left: 0%; }
+            .premium-hero { padding-top: 80px; min-height: auto; padding-bottom: 2rem; }
         }
 
         .project-content {
@@ -874,44 +1093,83 @@
     </header>
 
     <main>
-        <section class="project-hero hero-immersive">
-            <div class="hero-bg-container">
-                <div class="hero-bg-image"></div>
-                <div class="hero-bg-overlay"></div>
-                <div class="hero-ambient-glow"></div>
+        <section class="premium-hero">
+            <!-- Modern Frame-less Background Effects -->
+            <div class="hero-bg-layer">
+                <div class="ambient-glow glow-1"></div>
+                <div class="ambient-glow glow-2"></div>
+                <div class="ambient-glow glow-3"></div>
             </div>
-            
-            <div class="container fade-up hero-content-wrapper">
-                <div class="hero-nav">
-                    <a href="index.html#portfolio" class="back-link back-link-immersive"><i class="ph ph-arrow-left"></i> Back to Portfolio</a>
-                </div>
-                
-                <div class="hero-main-content">
-                    <div class="hero-badge">Case Study</div>
-                    <h1 class="hero-title">Go Book</h1>
-                    <p class="hero-description">A unified marketplace for buying, renting, and selling books with a seamless user experience.</p>
+
+            <!-- Back Navigation Removed -->
+
+            <div class="hero-container container">
+                <!-- Content Left -->
+                <div class="hero-content">
+                    <div class="meta-chips fade-up" style="animation-delay: 0.2s;">
+                        <span class="chip">UX Research</span>
+                        <span class="chip">UI Design</span>
+                        <span class="chip">Marketplace Platform</span>
+                        <span class="chip">Case Study</span>
+                    </div>
                     
-                    <div class="hero-meta">
-                        <div class="meta-item">
-                            <span class="meta-label">Role</span>
-                            <span class="meta-value">UX/UI Designer</span>
+                    <h1 class="hero-title fade-up" style="animation-delay: 0.3s;">
+                        Go <span class="highlight-text">Book</span>
+                    </h1>
+                    
+                    <h2 class="hero-subtitle fade-up" style="animation-delay: 0.4s;">
+                        Request Management System
+                    </h2>
+                    
+                    <p class="hero-description fade-up" style="animation-delay: 0.5s;">
+                        A comprehensive administrative dashboard designed to streamline the management of incoming requests, review workflows, and decision-making for a modern book marketplace platform.
+                    </p>
+                </div>
+
+                <!-- Abstract Visuals Right -->
+                <div class="hero-visuals fade-up" style="animation-delay: 0.6s;">
+                    <!-- Floating UI Cards -->
+                    <div class="floating-card card-1">
+                        <div class="card-header">
+                            <i class="ph-fill ph-book-open" style="color: #60A5FA;"></i>
+                            <span>New Request</span>
                         </div>
-                        <div class="meta-item">
-                            <span class="meta-label">Duration</span>
-                            <span class="meta-value">4 Weeks</span>
-                        </div>
-                        <div class="meta-item">
-                            <span class="meta-label">Tools</span>
-                            <span class="meta-value">Figma, Miro, Notion</span>
+                        <div class="card-line w-full"></div>
+                        <div class="card-line w-3/4"></div>
+                        <div class="card-footer">
+                            <span class="status-badge pending">Pending Review</span>
                         </div>
                     </div>
                     
-                    <div class="hero-actions">
-                        <a href="#project-details" class="btn btn-primary btn-glow">View Case Study</a>
+                    <div class="floating-card card-2">
+                         <div class="card-header">
+                            <i class="ph-fill ph-check-circle" style="color: #34D399;"></i>
+                            <span>Action Required</span>
+                        </div>
+                        <div class="card-flex">
+                            <div class="action-btn accept">Accept</div>
+                            <div class="action-btn reject">Reject</div>
+                        </div>
                     </div>
+
+                    <div class="floating-card card-3">
+                        <div class="stats-row">
+                            <div class="stat">
+                                <span class="stat-val">124</span>
+                                <span class="stat-label">Pending</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-val">89</span>
+                                <span class="stat-label">Approved</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Abstract geometric elements -->
+                    <div class="abstract-shape shape-circle"></div>
+                    <div class="abstract-shape shape-ring"></div>
                 </div>
             </div>
-            <div class="hero-bottom-fade"></div>
         </section>
 
         <section class="section container">
@@ -1576,76 +1834,127 @@
                 </div>
 
                 <h2 style="margin-top: 5rem;">Component Used</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 3rem; margin-top: 2rem;">
-                    <div class="component-span-2" style="display: flex; flex-direction: column; align-items: center; gap: 0.75rem;">
-                        <span style="font-weight: 600; color: var(--clr-text-main); font-size: 1.25rem; background: var(--clr-surface-light); padding: 0.5rem 1.5rem; border-radius: 99px;">Book Card</span>
-                        <i class="ph-bold ph-arrow-down" style="color: var(--clr-primary); font-size: 1.5rem;"></i>
-                        <div style="background: var(--clr-surface); padding: 1.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); width: 100%; display: flex; justify-content: center;">
-                            <img src="Book Card.png" alt="Book Card component" style="max-width: 100%; height: auto;">
+                <style>
+                    .components-grid {
+                        display: grid;
+                        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                        gap: 4rem 2rem;
+                        margin-top: 4rem;
+                        align-items: end;
+                    }
+
+                    .component-item {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 1.5rem;
+                        transition: transform 0.3s ease;
+                    }
+
+                    .component-item:hover {
+                        transform: translateY(-4px);
+                    }
+
+                    .component-img-container {
+                        width: 100%;
+                        height: 140px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+
+                    .component-img-container img {
+                        max-width: 100%;
+                        max-height: 100%;
+                        object-fit: contain;
+                        filter: drop-shadow(0 4px 6px rgba(0,0,0,0.08));
+                        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                    }
+
+                    .component-item:hover .component-img-container img {
+                        transform: scale(1.05);
+                        filter: drop-shadow(0 10px 15px rgba(0,0,0,0.12));
+                    }
+
+                    .component-title {
+                        font-weight: 500;
+                        color: var(--clr-text-main);
+                        font-size: 1.05rem;
+                        letter-spacing: 0.5px;
+                        text-align: center;
+                    }
+
+                    /* Larger components span 2 columns on tablet/desktop */
+                    @media (min-width: 768px) {
+                        .col-span-2 {
+                            grid-column: span 2;
+                        }
+                        .col-span-2 .component-img-container {
+                            height: 200px;
+                        }
+                    }
+                </style>
+
+                <div class="components-grid fade-up">
+                    <div class="component-item col-span-2">
+                        <div class="component-img-container">
+                            <img src="Book Card.png" alt="Book Card component">
                         </div>
+                        <span class="component-title">Book Card</span>
                     </div>
-                    <div style="display: flex; flex-direction: column; align-items: center; gap: 0.75rem;">
-                        <span style="font-weight: 600; color: var(--clr-text-main); font-size: 1.25rem; background: var(--clr-surface-light); padding: 0.5rem 1.5rem; border-radius: 99px;">Button</span>
-                        <i class="ph-bold ph-arrow-down" style="color: var(--clr-primary); font-size: 1.5rem;"></i>
-                        <div style="background: var(--clr-surface); padding: 1.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); width: 100%; display: flex; justify-content: center; align-items: center;">
-                            <img src="Button.png" alt="Button component" style="max-width: 100%; height: auto;">
+                    <div class="component-item col-span-2">
+                        <div class="component-img-container">
+                            <img src="Modal.png" alt="Modal component">
                         </div>
+                        <span class="component-title">Modal</span>
                     </div>
-                    <div style="display: flex; flex-direction: column; align-items: center; gap: 0.75rem;">
-                        <span style="font-weight: 600; color: var(--clr-text-main); font-size: 1.25rem; background: var(--clr-surface-light); padding: 0.5rem 1.5rem; border-radius: 99px;">Checkbox</span>
-                        <i class="ph-bold ph-arrow-down" style="color: var(--clr-primary); font-size: 1.5rem;"></i>
-                        <div style="background: var(--clr-surface); padding: 1.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); width: 100%; display: flex; justify-content: center; align-items: center;">
-                            <img src="Checkbox.png" alt="Checkbox component" style="max-width: 100%; height: auto;">
+                    <div class="component-item col-span-2">
+                        <div class="component-img-container">
+                            <img src="Tabel Cell.png" alt="Table Cell component">
                         </div>
+                        <span class="component-title">Table Cell</span>
                     </div>
-                    <div style="display: flex; flex-direction: column; align-items: center; gap: 0.75rem;">
-                        <span style="font-weight: 600; color: var(--clr-text-main); font-size: 1.25rem; background: var(--clr-surface-light); padding: 0.5rem 1.5rem; border-radius: 99px;">InputField</span>
-                        <i class="ph-bold ph-arrow-down" style="color: var(--clr-primary); font-size: 1.5rem;"></i>
-                        <div style="background: var(--clr-surface); padding: 1.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); width: 100%; display: flex; justify-content: center; align-items: center;">
-                            <img src="InputField.png" alt="InputField component" style="max-width: 100%; height: auto;">
+                    <div class="component-item">
+                        <div class="component-img-container">
+                            <img src="Upload Image.png" alt="Upload Image component">
                         </div>
+                        <span class="component-title">Upload Image</span>
                     </div>
-                    <div style="display: flex; flex-direction: column; align-items: center; gap: 0.75rem;">
-                        <span style="font-weight: 600; color: var(--clr-text-main); font-size: 1.25rem; background: var(--clr-surface-light); padding: 0.5rem 1.5rem; border-radius: 99px;">Modal</span>
-                        <i class="ph-bold ph-arrow-down" style="color: var(--clr-primary); font-size: 1.5rem;"></i>
-                        <div style="background: var(--clr-surface); padding: 1.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); width: 100%; display: flex; justify-content: center; align-items: center;">
-                            <img src="Modal.png" alt="Modal component" style="max-width: 100%; height: auto;">
+                    <div class="component-item">
+                        <div class="component-img-container">
+                            <img src="InputField.png" alt="InputField component">
                         </div>
+                        <span class="component-title">Input Field</span>
                     </div>
-                    <div style="display: flex; flex-direction: column; align-items: center; gap: 0.75rem;">
-                        <span style="font-weight: 600; color: var(--clr-text-main); font-size: 1.25rem; background: var(--clr-surface-light); padding: 0.5rem 1.5rem; border-radius: 99px;">Pagination</span>
-                        <i class="ph-bold ph-arrow-down" style="color: var(--clr-primary); font-size: 1.5rem;"></i>
-                        <div style="background: var(--clr-surface); padding: 1.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); width: 100%; display: flex; justify-content: center; align-items: center;">
-                            <img src="Pagination.png" alt="Pagination component" style="max-width: 100%; height: auto;">
+                    <div class="component-item">
+                        <div class="component-img-container">
+                            <img src="Button.png" alt="Button component">
                         </div>
+                        <span class="component-title">Button</span>
                     </div>
-                    <div style="display: flex; flex-direction: column; align-items: center; gap: 0.75rem;">
-                        <span style="font-weight: 600; color: var(--clr-text-main); font-size: 1.25rem; background: var(--clr-surface-light); padding: 0.5rem 1.5rem; border-radius: 99px;">RadioButton</span>
-                        <i class="ph-bold ph-arrow-down" style="color: var(--clr-primary); font-size: 1.5rem;"></i>
-                        <div style="background: var(--clr-surface); padding: 1.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); width: 100%; display: flex; justify-content: center; align-items: center;">
-                            <img src="RadioButton.png" alt="RadioButton component" style="max-width: 100%; height: auto;">
+                    <div class="component-item">
+                        <div class="component-img-container">
+                            <img src="Pagination.png" alt="Pagination component">
                         </div>
+                        <span class="component-title">Pagination</span>
                     </div>
-                    <div style="display: flex; flex-direction: column; align-items: center; gap: 0.75rem;">
-                        <span style="font-weight: 600; color: var(--clr-text-main); font-size: 1.25rem; background: var(--clr-surface-light); padding: 0.5rem 1.5rem; border-radius: 99px;">Status</span>
-                        <i class="ph-bold ph-arrow-down" style="color: var(--clr-primary); font-size: 1.5rem;"></i>
-                        <div style="background: var(--clr-surface); padding: 1.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); width: 100%; display: flex; justify-content: center; align-items: center;">
-                            <img src="Status.png" alt="Status component" style="max-width: 100%; height: auto;">
+                    <div class="component-item">
+                        <div class="component-img-container">
+                            <img src="Checkbox.png" alt="Checkbox component">
                         </div>
+                        <span class="component-title">Checkbox</span>
                     </div>
-                    <div style="display: flex; flex-direction: column; align-items: center; gap: 0.75rem;">
-                        <span style="font-weight: 600; color: var(--clr-text-main); font-size: 1.25rem; background: var(--clr-surface-light); padding: 0.5rem 1.5rem; border-radius: 99px;">Tabel Cell</span>
-                        <i class="ph-bold ph-arrow-down" style="color: var(--clr-primary); font-size: 1.5rem;"></i>
-                        <div style="background: var(--clr-surface); padding: 1.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); width: 100%; display: flex; justify-content: center; align-items: center;">
-                            <img src="Tabel Cell.png" alt="Tabel Cell component" style="max-width: 100%; height: auto;">
+                    <div class="component-item">
+                        <div class="component-img-container">
+                            <img src="RadioButton.png" alt="Radio Button component">
                         </div>
+                        <span class="component-title">Radio Button</span>
                     </div>
-                    <div style="display: flex; flex-direction: column; align-items: center; gap: 0.75rem;">
-                        <span style="font-weight: 600; color: var(--clr-text-main); font-size: 1.25rem; background: var(--clr-surface-light); padding: 0.5rem 1.5rem; border-radius: 99px;">Upload Image</span>
-                        <i class="ph-bold ph-arrow-down" style="color: var(--clr-primary); font-size: 1.5rem;"></i>
-                        <div style="background: var(--clr-surface); padding: 1.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); width: 100%; display: flex; justify-content: center; align-items: center;">
-                            <img src="Upload Image.png" alt="Upload Image component" style="max-width: 100%; height: auto;">
+                    <div class="component-item">
+                        <div class="component-img-container">
+                            <img src="Status.png" alt="Status component">
                         </div>
+                        <span class="component-title">Status</span>
                     </div>
                 </div>
 
@@ -1790,6 +2099,12 @@
                     </div>
                     <h2 class="closing-title">Thanks for Viewing ✨</h2>
                     <p class="closing-subtitle">Feel free to explore more of my work or get in touch.</p>
+                </div>
+
+                <!-- Project Navigation -->
+                <div class="project-navigation fade-up" style="display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--clr-border);">
+                    <a href="smart-home.html" style="display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid var(--clr-border); padding: 0.75rem 1.5rem; border-radius: 99px; font-weight: 600; color: var(--clr-text-main); transition: all 0.3s ease; background: var(--clr-surface);" onmouseover="this.style.background='var(--clr-surface-light)'; this.style.borderColor='var(--clr-primary)';" onmouseout="this.style.background='var(--clr-surface)'; this.style.borderColor='var(--clr-border)';"><i class="ph ph-arrow-left"></i> Previous Project</a>
+                    <a href="instagram-enhancement.html" style="display: inline-flex; align-items: center; gap: 0.5rem; background-color: var(--clr-primary); color: white; padding: 0.75rem 1.5rem; border-radius: 99px; font-weight: 600; transition: all 0.3s ease; border: 1px solid var(--clr-primary);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 10px 15px -3px rgba(37, 99, 235, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">Next Project <i class="ph ph-arrow-right"></i></a>
                 </div>
             </div>
         </section>

@@ -77,32 +77,663 @@
     </header>
 
     <main>
-        <section class="project-hero">
-            <div class="container fade-up">
-                <div style="text-align: left; max-width: 100%; margin: 0 auto; width: 100%;">
-                    <a href="index.html#portfolio" class="back-link"><i class="ph ph-arrow-left"></i> Back to Portfolio</a>
+<style>
+    /* Premium NDA Enterprise Hero - Light Theme */
+    .nda-hero {
+        position: relative;
+        padding: 120px 0 60px; /* Reduced top padding */
+        background: #f8fafc; /* Soft off-white */
+        color: #0f172a;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+        font-family: 'Inter', sans-serif;
+    }
+
+    /* Adjust padding of content directly below hero */
+    .section.container .project-content {
+        padding-top: 2.5rem !important;
+    }
+
+    /* Ambient Background Effects */
+    .nda-hero-glow-1 {
+        position: absolute;
+        top: -10%;
+        right: -5%;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(14, 165, 233, 0.08) 0%, transparent 60%);
+        border-radius: 50%;
+        filter: blur(60px);
+        z-index: 0;
+    }
+    .nda-hero-glow-2 {
+        position: absolute;
+        bottom: -20%;
+        left: -10%;
+        width: 800px;
+        height: 800px;
+        background: radial-gradient(circle, rgba(6, 182, 212, 0.05) 0%, transparent 60%);
+        border-radius: 50%;
+        filter: blur(80px);
+        z-index: 0;
+    }
+    .nda-hero-grid-bg {
+        position: absolute;
+        inset: 0;
+        background-image: 
+            linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+        background-size: 40px 40px;
+        z-index: 0;
+        opacity: 0.8;
+    }
+
+    .nda-hero-container {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+        padding: 0 2rem;
+    }
+
+    @media (max-width: 992px) {
+        .nda-hero-container {
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+        .nda-badge-row, .nda-tags {
+            justify-content: center;
+        }
+    }
+
+    /* Typography & Left Content */
+    .nda-badge-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+    .nda-badge {
+        background: rgba(255,255,255,0.8);
+        border: 1px solid rgba(0,0,0,0.05);
+        padding: 0.5rem 1rem;
+        border-radius: 99px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        backdrop-filter: blur(10px);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #475569;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    }
+    .badge-confidential {
+        color: #d97706;
+        background: rgba(251, 191, 36, 0.1);
+        border-color: rgba(251, 191, 36, 0.2);
+    }
+    .badge-role {
+        color: #0284c7;
+        background: rgba(14, 165, 233, 0.1);
+        border-color: rgba(14, 165, 233, 0.2);
+    }
+
+    .nda-title {
+        font-size: 3.5rem;
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+        color: #0f172a;
+        letter-spacing: -1px;
+    }
+    .nda-subtitle {
+        font-size: 1.5rem;
+        color: #0284c7;
+        font-weight: 500;
+        margin-bottom: 1.5rem;
+        line-height: 1.3;
+    }
+    .nda-description {
+        font-size: 1.1rem;
+        color: #475569;
+        line-height: 1.7;
+        margin-bottom: 2.5rem;
+        max-width: 90%;
+    }
+    @media (max-width: 992px) {
+        .nda-description { margin: 0 auto 2.5rem; }
+    }
+
+    .nda-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+    .nda-tag {
+        font-size: 0.9rem;
+        color: #475569;
+        background: #ffffff;
+        border: 1px solid rgba(0,0,0,0.05);
+        padding: 0.4rem 1rem;
+        border-radius: 6px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+    }
+
+    /* Abstract UI Composition (Right Side) */
+    .nda-abstract-ui {
+        position: relative;
+        width: 100%;
+        height: 500px;
+        perspective: 1200px;
+    }
+    .ui-layer {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.85);
+        border: 1px solid rgba(0,0,0,0.05);
+        border-radius: 16px;
+        backdrop-filter: blur(16px);
+        box-shadow: 0 20px 40px -10px rgba(0,0,0,0.08);
+        transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.6s ease;
+    }
+    
+    /* Main Dashboard Board */
+    .ui-main-board {
+        top: 10%;
+        left: 10%;
+        width: 80%;
+        height: 70%;
+        transform: rotateY(-15deg) rotateX(5deg) translateZ(-50px);
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .ui-header {
+        height: 24px;
+        width: 100%;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding-bottom: 1rem;
+    }
+    .ui-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgba(0,0,0,0.1);
+    }
+    .ui-dot:nth-child(1) { background: #ef4444; }
+    .ui-dot:nth-child(2) { background: #f59e0b; }
+    .ui-dot:nth-child(3) { background: #10b981; }
+
+    .ui-sidebar {
+        position: absolute;
+        left: 1.5rem;
+        top: 4.5rem;
+        width: 60px;
+        bottom: 1.5rem;
+        border-right: 1px solid rgba(0,0,0,0.05);
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding-right: 1rem;
+    }
+    .ui-side-item {
+        width: 100%;
+        height: 16px;
+        border-radius: 4px;
+        background: rgba(0,0,0,0.05);
+    }
+    .ui-content-area {
+        position: absolute;
+        top: 4.5rem;
+        left: 90px;
+        right: 1.5rem;
+        bottom: 1.5rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto 1fr;
+        gap: 1rem;
+    }
+    .ui-card {
+        background: #ffffff;
+        border-radius: 8px;
+        border: 1px solid rgba(0,0,0,0.03);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    }
+
+    /* Floating KPI Card 1 */
+    .ui-kpi-1 {
+        top: 0%;
+        right: 0%;
+        width: 220px;
+        height: 120px;
+        transform: rotateY(-10deg) translateZ(80px);
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: #ffffff;
+        border: 1px solid rgba(14, 165, 233, 0.15);
+    }
+    .kpi-title { font-size: 0.75rem; color: #64748b; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
+    .kpi-value { font-size: 2rem; font-weight: 700; color: #0f172a; display: flex; align-items: center; gap: 0.5rem; }
+    .kpi-trend { color: #059669; font-size: 0.85rem; background: rgba(16, 185, 129, 0.1); padding: 0.2rem 0.5rem; border-radius: 4px; display: inline-flex; align-items: center; gap: 0.25rem;}
+
+    /* Floating Graph Card 2 */
+    .ui-graph {
+        bottom: 5%;
+        left: 0%;
+        width: 260px;
+        height: 160px;
+        transform: rotateY(-20deg) translateZ(120px);
+        padding: 1.5rem;
+        display: flex;
+        align-items: flex-end;
+        gap: 0.5rem;
+        background: #ffffff;
+    }
+    .graph-bar {
+        flex: 1;
+        background: rgba(14, 165, 233, 0.15);
+        border-radius: 4px 4px 0 0;
+    }
+    .bar-1 { height: 40%; }
+    .bar-2 { height: 70%; }
+    .bar-3 { height: 50%; }
+    .bar-4 { height: 90%; background: #0ea5e9; box-shadow: 0 0 10px rgba(14, 165, 233, 0.2); }
+    .bar-5 { height: 60%; }
+
+    /* Hover interactions */
+    .nda-abstract-ui:hover .ui-main-board { transform: rotateY(-5deg) rotateX(2deg) translateZ(-20px); }
+    .nda-abstract-ui:hover .ui-kpi-1 { transform: rotateY(-5deg) translateZ(100px) translateY(-10px); box-shadow: 0 25px 50px -10px rgba(0,0,0,0.12); }
+    .nda-abstract-ui:hover .ui-graph { transform: rotateY(-10deg) translateZ(150px) translateY(10px); box-shadow: 0 25px 50px -10px rgba(0,0,0,0.12); }
+</style>
+
+<section class="nda-hero">
+    <div class="nda-hero-grid-bg"></div>
+    <div class="nda-hero-glow-1"></div>
+    <div class="nda-hero-glow-2"></div>
+    
+    <div class="nda-hero-container fade-up">
+        <div class="nda-hero-content">
+            <div class="nda-badge-row">
+                <span class="nda-badge badge-role"><i class="ph-bold ph-user-circle"></i> UI/UX Designer — TCS Interactive</span>
+                <span class="nda-badge badge-confidential"><i class="ph-bold ph-lock-key"></i> NDA / Confidential</span>
+                <span class="nda-badge"><i class="ph-bold ph-chart-bar"></i> Enterprise Scale</span>
+            </div>
+            
+            <h1 class="nda-title">Government e-Marketplace</h1>
+            <h2 class="nda-subtitle">Enterprise Procurement & Marketplace Platform</h2>
+            
+            <p class="nda-description">
+                Designed scalable procurement workflows, marketplace systems, dashboards, catalog management, pricing systems, reporting modules, and admin experiences for a large-scale government marketplace platform based on approved BRDs.
+            </p>
+            
+            <div class="nda-tags">
+                <span class="nda-tag">Dashboard Design</span>
+                <span class="nda-tag">Marketplace UX</span>
+                <span class="nda-tag">Enterprise UX</span>
+                <span class="nda-tag">Procurement System</span>
+                <span class="nda-tag">Admin Platform</span>
+            </div>
+        </div>
+        
+        <div class="nda-abstract-ui">
+            <!-- Main Board Background -->
+            <div class="ui-layer ui-main-board">
+                <div class="ui-header">
+                    <div class="ui-dot"></div><div class="ui-dot"></div><div class="ui-dot"></div>
                 </div>
-                <h1>Government e-Marketplace (NDA Project)</h1>
-                <p>UX Case Study</p>
-                <div class="project-banner">
-                    <img src="gem_nda_thumbnail.png" alt="Government e-Marketplace Project Banner">
+                <div class="ui-sidebar">
+                    <div class="ui-side-item" style="opacity: 0.8; height: 30px;"></div>
+                    <div class="ui-side-item" style="opacity: 0.4"></div>
+                    <div class="ui-side-item" style="opacity: 0.4"></div>
+                    <div class="ui-side-item" style="opacity: 0.4"></div>
+                </div>
+                <div class="ui-content-area">
+                    <div class="ui-card" style="grid-column: span 2; height: 80px; display: flex; align-items: center; padding: 1rem; gap: 1rem;">
+                         <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(0,0,0,0.05);"></div>
+                         <div style="flex: 1; height: 10px; background: rgba(0,0,0,0.05); border-radius: 4px;"></div>
+                    </div>
+                    <div class="ui-card"></div>
+                    <div class="ui-card"></div>
                 </div>
             </div>
-        </section>
+            
+            <!-- Floating KPI Card -->
+            <div class="ui-layer ui-kpi-1">
+                <div class="kpi-title">Procurement Volume</div>
+                <div class="kpi-value">$24M <span class="kpi-trend"><i class="ph-bold ph-trend-up"></i> 12%</span></div>
+            </div>
+            
+            <!-- Floating Graph Card -->
+            <div class="ui-layer ui-graph">
+                <div style="position: absolute; top: 1.5rem; left: 1.5rem; color: #64748b; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Workflow Efficiency</div>
+                <div class="graph-bar bar-1"></div>
+                <div class="graph-bar bar-2"></div>
+                <div class="graph-bar bar-3"></div>
+                <div class="graph-bar bar-4"></div>
+                <div class="graph-bar bar-5"></div>
+            </div>
+        </div>
+    </div>
+</section>
 
         <section class="section container">
             <div class="project-content fade-up">
-                <h2>Overview</h2>
-                <p>The Government e-Marketplace (GeM) required a comprehensive redesign of its CMS and dashboard systems to improve usability for thousands of vendors and government buyers. The goal was to simplify complex data visualization and streamline the procurement workflow.</p>
-                
-                <h2>My Role</h2>
-                <p>As the lead UI/UX Designer, I was responsible for end-to-end design execution. This included stakeholder interviews, creating wireframes, establishing a new design system, and delivering high-fidelity prototypes for the engineering team.</p>
-                
-                <h2>Key Challenges</h2>
-                <p>Balancing the display of dense data with an approachable interface was the primary challenge. We needed to ensure that users with varying levels of technical proficiency could easily navigate the platform without feeling overwhelmed.</p>
-                
-                <h2>Results</h2>
-                <p>The redesign led to a 40% reduction in support tickets related to navigation and a significant improvement in task completion rates among newly onboarded vendors.</p>
+                <style>
+                    .case-study-section { margin-bottom: 4rem; }
+                    .section-title { font-size: 2rem; font-weight: 700; color: var(--clr-text-main); margin-bottom: 1.5rem; line-height: 1.2; }
+                    .subsection-title { font-size: 1.25rem; font-weight: 600; color: var(--clr-text-main); margin: 1.5rem 0 1rem; }
+                    .section-text { font-size: 1.125rem; line-height: 1.8; color: var(--clr-text-muted); margin-bottom: 1.25rem; }
+                    
+                    .styled-list { list-style: none; padding: 0; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; }
+                    .styled-list li { position: relative; padding-left: 1.5rem; font-size: 1.125rem; color: var(--clr-text-muted); line-height: 1.6; }
+                    .styled-list li::before { content: '•'; position: absolute; left: 0; color: var(--clr-primary); font-weight: bold; font-size: 1.5rem; line-height: 1; top: -2px; }
+                    
+                    .case-study-grid { display: grid; gap: 2rem; margin-bottom: 4rem; }
+                    .case-study-grid.two-cols { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+                    
+                    .grid-card { background: var(--clr-surface); padding: 2.5rem; border-radius: var(--radius-lg); border: 1px solid var(--clr-border); box-shadow: var(--shadow-sm); }
+                    
+                    .tools-tags, .skills-tags { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem; }
+                    .tool-tag, .skill-tag { background: var(--clr-surface-light); border: 1px solid var(--clr-border); color: var(--clr-text-main); padding: 0.5rem 1rem; border-radius: 99px; font-weight: 500; font-size: 0.95rem; }
+                    
+                    .challenge-highlight { background: rgba(37, 99, 235, 0.05); border-left: 4px solid var(--clr-primary); padding: 1.5rem; border-radius: 0 var(--radius-md) var(--radius-md) 0; font-weight: 500; color: var(--clr-text-main); }
+                    
+                    .process-steps { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; margin-top: 1.5rem; }
+                    .step-item { background: var(--clr-surface); border: 1px solid var(--clr-border); padding: 0.75rem 1.25rem; border-radius: 8px; font-weight: 500; color: var(--clr-text-main); font-size: 0.95rem; box-shadow: var(--shadow-sm); }
+                    .process-steps i { color: var(--clr-text-muted); font-size: 1.2rem; }
+                    
+                    .modules-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 2rem; margin-top: 2rem; }
+                    .module-card { background: var(--clr-surface); border: 1px solid var(--clr-border); border-radius: var(--radius-lg); padding: 2.5rem; position: relative; overflow: hidden; transition: transform 0.3s ease; box-shadow: var(--shadow-sm); }
+                    .module-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: var(--clr-primary); }
+                    .module-number { font-size: 5rem; font-weight: 800; color: var(--clr-surface-dark); opacity: 0.3; position: absolute; top: -15px; right: 15px; line-height: 1; z-index: 0; user-select: none; }
+                    .module-title { font-size: 1.35rem; font-weight: 700; color: var(--clr-text-main); margin-bottom: 1rem; position: relative; z-index: 1; border-bottom: 1px solid var(--clr-border); padding-bottom: 1rem; }
+                    .module-objective { font-size: 1.05rem; color: var(--clr-text-main); margin-bottom: 1.5rem; position: relative; z-index: 1; }
+                    .module-details { font-size: 1rem; color: var(--clr-text-muted); display: flex; flex-direction: column; gap: 1rem; position: relative; z-index: 1; }
+                    .module-details p { margin: 0; line-height: 1.6; }
+                    .module-details strong { color: var(--clr-text-main); }
+                    
+                    .challenges-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 4rem; }
+                    .challenge-card { background: var(--clr-surface-light); padding: 2rem; border-radius: var(--radius-lg); border-left: 4px solid var(--clr-primary); }
+                    .challenge-title { font-size: 1.25rem; font-weight: 700; color: var(--clr-text-main); margin-bottom: 0.75rem; }
+                </style>
+
+                <div class="case-study-section fade-up">
+                    <h2 class="section-title">Project Overview</h2>
+                    <p class="section-text">The Government e-Marketplace project was a large-scale procurement and marketplace platform designed to streamline the buying and selling process between government organizations, departments, vendors, and service providers.</p>
+                    <p class="section-text">As a UI/UX Designer at <strong>Tata Consultancy Services (TCS) Interactive</strong>, I worked closely with Business Analysts, Product Owners, Developers, and Stakeholders to translate approved BRDs (Business Requirement Documents) into scalable, user-centric digital experiences.</p>
+                    
+                    <h3 class="subsection-title">Platform Focus</h3>
+                    <ul class="styled-list">
+                        <li>Simplifying procurement workflows</li>
+                        <li>Improving operational transparency</li>
+                        <li>Managing large-scale catalogs and configurations</li>
+                        <li>Enabling efficient marketplace operations</li>
+                        <li>Providing analytics and reporting for administrators and departments</li>
+                    </ul>
+                    <p class="section-text" style="margin-top: 1.5rem;">My contribution included end-to-end UX thinking, information architecture, workflow optimization, dashboard design, and scalable enterprise UI systems.</p>
+                </div>
+
+                <div class="case-study-grid two-cols fade-up">
+                    <div class="grid-card">
+                        <h2 class="section-title" style="margin-bottom: 0.5rem;">My Role</h2>
+                        <p class="section-text" style="color: var(--clr-primary); font-weight: 600; margin-bottom: 1.5rem;">UI/UX Designer</p>
+                        <h3 class="subsection-title" style="margin-top: 0;">Responsibilities</h3>
+                        <ul class="styled-list compact">
+                            <li>Understanding and analyzing BRDs</li>
+                            <li>User flow mapping & wireframing</li>
+                            <li>Enterprise dashboard & UI system design</li>
+                            <li>Design system consistency & scalable creation</li>
+                            <li>Workflow optimization</li>
+                            <li>UX validation with stakeholders</li>
+                            <li>Collaboration with development teams</li>
+                            <li>Handling complex enterprise-level forms and data systems</li>
+                        </ul>
+                    </div>
+                    <div class="grid-card">
+                        <h2 class="section-title">Tools Used</h2>
+                        <div class="tools-tags">
+                            <span class="tool-tag">Figma</span>
+                            <span class="tool-tag">Mastercraft (Jile)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-study-section fade-up">
+                    <h2 class="section-title">Design Approach</h2>
+                    <p class="section-text">The project involved highly complex enterprise workflows with multiple user roles such as <strong>Buyers, Vendors, Marketplace Admins, Government Departments, and Procurement Teams</strong>.</p>
+                    <p class="section-text challenge-highlight"><strong>Key Challenge:</strong> Converting complex procurement logic into simple and intuitive user experiences while maintaining compliance with government workflows and approval systems.</p>
+                    
+                    <h3 class="subsection-title">My Process</h3>
+                    <div class="process-steps">
+                        <span class="step-item">BRD Analysis</span> <i class="ph-bold ph-caret-right"></i>
+                        <span class="step-item">Requirement Mapping</span> <i class="ph-bold ph-caret-right"></i>
+                        <span class="step-item">User Journey Creation</span> <i class="ph-bold ph-caret-right"></i>
+                        <span class="step-item">Information Architecture</span> <i class="ph-bold ph-caret-right"></i>
+                        <span class="step-item">Low-Fidelity Wireframes</span> <i class="ph-bold ph-caret-right"></i>
+                        <span class="step-item">High-Fidelity UI</span> <i class="ph-bold ph-caret-right"></i>
+                        <span class="step-item">Design Reviews</span> <i class="ph-bold ph-caret-right"></i>
+                        <span class="step-item">Developer Handoff</span> <i class="ph-bold ph-caret-right"></i>
+                        <span class="step-item">Iterative Improvements</span>
+                    </div>
+                </div>
+
+                <div class="case-study-section fade-up">
+                    <h2 class="section-title">Modules & Contributions</h2>
+                    <div class="modules-grid">
+                        <!-- Module 1 -->
+                        <div class="module-card">
+                            <div class="module-number">01</div>
+                            <h3 class="module-title">Category Creation</h3>
+                            <p class="module-objective"><strong>Objective:</strong> Enable administrators to create and manage hierarchical product/service categories for marketplace organization.</p>
+                            <div class="module-details">
+                                <p><strong>My Contribution:</strong> Designed multi-level category workflows, intuitive nesting structures, and bulk management interfaces.</p>
+                                <p><strong>UX Impact:</strong> Simplified complex taxonomy, reduced admin confusion, and improved discoverability.</p>
+                                <p><strong>Key Features:</strong> Parent-child relationships, tagging, search/filter, bulk upload.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Module 2 -->
+                        <div class="module-card">
+                            <div class="module-number">02</div>
+                            <h3 class="module-title">Catalog Creation</h3>
+                            <p class="module-objective"><strong>Objective:</strong> Provide vendors/admins with the ability to create standardized catalogs for products and services.</p>
+                            <div class="module-details">
+                                <p><strong>My Contribution:</strong> Designed onboarding flows, structured product information layouts, and bulk upload experiences.</p>
+                                <p><strong>UX Impact:</strong> Reduced cognitive overload in long forms and simplified multi-step submission.</p>
+                                <p><strong>Key Features:</strong> Metadata management, media upload, draft/publish workflows, approval system.</p>
+                            </div>
+                        </div>
+
+                        <!-- Module 3 -->
+                        <div class="module-card">
+                            <div class="module-number">03</div>
+                            <h3 class="module-title">Configuration Module</h3>
+                            <p class="module-objective"><strong>Objective:</strong> Manage dynamic marketplace configurations and procurement rules.</p>
+                            <div class="module-details">
+                                <p><strong>My Contribution:</strong> Designed configurable settings dashboards and organized rule-based systems into role-based experiences.</p>
+                                <p><strong>UX Impact:</strong> Improved admin efficiency, reduced errors, and simplified enterprise settings.</p>
+                                <p><strong>Key Features:</strong> Workflow settings, approval logic, user permissions, dynamic parameters.</p>
+                            </div>
+                        </div>
+
+                        <!-- Module 4 -->
+                        <div class="module-card">
+                            <div class="module-number">04</div>
+                            <h3 class="module-title">Specifications Mgmt.</h3>
+                            <p class="module-objective"><strong>Objective:</strong> Allow structured technical specifications for products and services.</p>
+                            <div class="module-details">
+                                <p><strong>My Contribution:</strong> Designed specification templates and created comparison-friendly technical input layouts.</p>
+                                <p><strong>UX Impact:</strong> Better readability for technical data, easier comparison, and reduced form complexity.</p>
+                                <p><strong>Key Features:</strong> Attribute-based entry, dynamic fields, standardized templates.</p>
+                            </div>
+                        </div>
+
+                        <!-- Module 5 -->
+                        <div class="module-card">
+                            <div class="module-number">05</div>
+                            <h3 class="module-title">Pricing Module</h3>
+                            <p class="module-objective"><strong>Objective:</strong> Manage product pricing, quotations, taxes, and procurement rates.</p>
+                            <div class="module-details">
+                                <p><strong>My Contribution:</strong> Designed pricing workflows, editable tables, and improved pricing transparency.</p>
+                                <p><strong>UX Impact:</strong> Simplified complex structures, improved visibility of breakdowns, and reduced input errors.</p>
+                                <p><strong>Key Features:</strong> Dynamic pricing, tax configuration, comparison, approval-based updates.</p>
+                            </div>
+                        </div>
+
+                        <!-- Module 6 -->
+                        <div class="module-card">
+                            <div class="module-number">06</div>
+                            <h3 class="module-title">Dependencies Mgmt.</h3>
+                            <p class="module-objective"><strong>Objective:</strong> Handle product/service dependencies and conditional workflows.</p>
+                            <div class="module-details">
+                                <p><strong>My Contribution:</strong> Designed dependency mapping interfaces and structured relationship visualizations.</p>
+                                <p><strong>UX Impact:</strong> Improved process clarity, reduced dependency conflicts, and enhanced transparency.</p>
+                                <p><strong>Key Features:</strong> Linked products, conditional logic flows, rule-based tracking.</p>
+                            </div>
+                        </div>
+
+                        <!-- Module 7 -->
+                        <div class="module-card">
+                            <div class="module-number">07</div>
+                            <h3 class="module-title">Demand Aggregation</h3>
+                            <p class="module-objective"><strong>Objective:</strong> Consolidate procurement demands from multiple departments for optimized purchasing.</p>
+                            <div class="module-details">
+                                <p><strong>My Contribution:</strong> Designed aggregation dashboards and structured department-wise tracking visualizations.</p>
+                                <p><strong>UX Impact:</strong> Improved procurement visibility and simplified large-volume data handling.</p>
+                                <p><strong>Key Features:</strong> Demand collection, analytics, quantity summaries, approval workflows.</p>
+                            </div>
+                        </div>
+
+                        <!-- Module 8 -->
+                        <div class="module-card">
+                            <div class="module-number">08</div>
+                            <h3 class="module-title">Request Mgmt. System</h3>
+                            <p class="module-objective"><strong>Objective:</strong> Manage procurement requests, approvals, escalations, and tracking.</p>
+                            <div class="module-details">
+                                <p><strong>My Contribution:</strong> Designed request lifecycle workflows and structured timeline tracking systems.</p>
+                                <p><strong>UX Impact:</strong> Simplified multi-step approvals and reduced process ambiguity.</p>
+                                <p><strong>Key Features:</strong> Request creation, status tracking, notifications, escalations, activity history.</p>
+                            </div>
+                        </div>
+
+                        <!-- Module 9 -->
+                        <div class="module-card">
+                            <div class="module-number">09</div>
+                            <h3 class="module-title">Marketplace</h3>
+                            <p class="module-objective"><strong>Objective:</strong> Create a marketplace experience for browsing, comparing, and purchasing products/services.</p>
+                            <div class="module-details">
+                                <p><strong>My Contribution:</strong> Designed layouts, listing/detail pages, and structured procurement-focused buying flows.</p>
+                                <p><strong>UX Impact:</strong> Improved procurement efficiency, reduced search friction, and enhanced discoverability.</p>
+                                <p><strong>Key Features:</strong> Advanced search, filter/sort, product comparison, purchase workflows.</p>
+                            </div>
+                        </div>
+
+                        <!-- Module 10 -->
+                        <div class="module-card">
+                            <div class="module-number">10</div>
+                            <h3 class="module-title">Marketplace Admin</h3>
+                            <p class="module-objective"><strong>Objective:</strong> Provide centralized operational control for marketplace administrators.</p>
+                            <div class="module-details">
+                                <p><strong>My Contribution:</strong> Designed enterprise admin dashboards and structured management panels.</p>
+                                <p><strong>UX Impact:</strong> Improved admin productivity, faster operations, and better visibility.</p>
+                                <p><strong>Key Features:</strong> Vendor management, product moderation, system monitoring.</p>
+                            </div>
+                        </div>
+
+                        <!-- Module 11 -->
+                        <div class="module-card">
+                            <div class="module-number">11</div>
+                            <h3 class="module-title">Reports Module</h3>
+                            <p class="module-objective"><strong>Objective:</strong> Provide analytical and operational reports for decision-making.</p>
+                            <div class="module-details">
+                                <p><strong>My Contribution:</strong> Designed reporting dashboards, structured data visualization, and export workflows.</p>
+                                <p><strong>UX Impact:</strong> Simplified data interpretation and enhanced executive-level visibility.</p>
+                                <p><strong>Key Features:</strong> Procurement analytics, vendor reports, financial summaries, usage metrics.</p>
+                            </div>
+                        </div>
+
+                        <!-- Module 12 -->
+                        <div class="module-card">
+                            <div class="module-number">12</div>
+                            <h3 class="module-title">Marketplace Dashboard</h3>
+                            <p class="module-objective"><strong>Objective:</strong> Create centralized dashboards for monitoring marketplace activities and KPIs.</p>
+                            <div class="module-details">
+                                <p><strong>My Contribution:</strong> Designed KPI-focused experiences and structured widgets/analytics cards.</p>
+                                <p><strong>UX Impact:</strong> Faster decision-making, improved operational monitoring, and better data insights.</p>
+                                <p><strong>Key Features:</strong> Real-time metrics, procurement trends, order statistics, revenue tracking.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-study-section fade-up">
+                    <h2 class="section-title">Design Challenges</h2>
+                    <div class="challenges-grid">
+                        <div class="challenge-card">
+                            <h3 class="challenge-title">Complex Enterprise Workflows</h3>
+                            <p class="section-text" style="font-size: 1rem; margin-bottom: 0;">The platform involved highly detailed procurement logic and government processes. The challenge was simplifying complexity without losing functionality.</p>
+                        </div>
+                        <div class="challenge-card">
+                            <h3 class="challenge-title">Large Data Handling</h3>
+                            <p class="section-text" style="font-size: 1rem; margin-bottom: 0;">Designed scalable interfaces for handling extensive datasets, long tables, configurations, and reports.</p>
+                        </div>
+                        <div class="challenge-card">
+                            <h3 class="challenge-title">Multi-Role System</h3>
+                            <p class="section-text" style="font-size: 1rem; margin-bottom: 0;">Created experiences tailored for different user roles while maintaining consistency across the platform.</p>
+                        </div>
+                        <div class="challenge-card">
+                            <h3 class="challenge-title">Compliance & Structure</h3>
+                            <p class="section-text" style="font-size: 1rem; margin-bottom: 0;">Ensured all workflows aligned with approved BRDs and enterprise governance standards.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-study-grid two-cols fade-up">
+                    <div class="grid-card">
+                        <h2 class="section-title" style="margin-bottom: 1.5rem;">Key Achievements</h2>
+                        <ul class="styled-list compact">
+                            <li>Improved usability of complex procurement systems</li>
+                            <li>Streamlined enterprise workflows</li>
+                            <li>Designed scalable and reusable UI components</li>
+                            <li>Enhanced operational efficiency through UX optimization</li>
+                            <li>Delivered enterprise-grade marketplace experiences</li>
+                            <li>Collaborated successfully across cross-functional teams</li>
+                        </ul>
+                    </div>
+                    <div class="grid-card">
+                        <h2 class="section-title">Skills Demonstrated</h2>
+                        <div class="skills-tags">
+                            <span class="skill-tag">Enterprise UX Design</span>
+                            <span class="skill-tag">Dashboard Design</span>
+                            <span class="skill-tag">Information Architecture</span>
+                            <span class="skill-tag">Workflow Design</span>
+                            <span class="skill-tag">Design Systems</span>
+                            <span class="skill-tag">User-Centered Design</span>
+                            <span class="skill-tag">Data Visualization</span>
+                            <span class="skill-tag">Interaction Design</span>
+                            <span class="skill-tag">Complex Form UX</span>
+                            <span class="skill-tag">Procurement UX</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-study-section fade-up" style="background: var(--clr-surface); padding: 3rem; border-radius: var(--radius-lg); border-left: 4px solid var(--clr-primary); box-shadow: var(--shadow-sm);">
+                    <h2 class="section-title" style="margin-bottom: 1rem;">Outcome</h2>
+                    <p class="section-text" style="margin: 0; font-size: 1.2rem;">The project successfully transformed complex procurement operations into a structured and intuitive digital ecosystem. The designs supported operational efficiency, scalable marketplace management, and streamlined procurement experiences for enterprise-level users and government stakeholders.</p>
+                </div>
 
                 <!-- Closing Section -->
                 <div class="closing-section fade-up">
@@ -111,6 +742,12 @@
                     </div>
                     <h2 class="closing-title">Thanks for Viewing ✨</h2>
                     <p class="closing-subtitle">Feel free to explore more of my work or get in touch.</p>
+                </div>
+
+                <!-- Project Navigation -->
+                <div class="project-navigation fade-up" style="display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--clr-border);">
+                    <a href="instagram-enhancement.html" style="display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid var(--clr-border); padding: 0.75rem 1.5rem; border-radius: 99px; font-weight: 600; color: var(--clr-text-main); transition: all 0.3s ease; background: var(--clr-surface);" onmouseover="this.style.background='var(--clr-surface-light)'; this.style.borderColor='var(--clr-primary)';" onmouseout="this.style.background='var(--clr-surface)'; this.style.borderColor='var(--clr-border)';"><i class="ph ph-arrow-left"></i> Previous Project</a>
+                    <a href="go-book.html" style="display: inline-flex; align-items: center; gap: 0.5rem; background-color: var(--clr-primary); color: white; padding: 0.75rem 1.5rem; border-radius: 99px; font-weight: 600; transition: all 0.3s ease; border: 1px solid var(--clr-primary);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 10px 15px -3px rgba(37, 99, 235, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">Next Project <i class="ph ph-arrow-right"></i></a>
                 </div>
             </div>
         </section>

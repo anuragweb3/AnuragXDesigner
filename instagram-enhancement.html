@@ -89,8 +89,7 @@
         <section class="project-hero">
             <div class="container fade-up">
                 <div style="text-align: left; max-width: 100%; margin: 0 auto; width: 100%;">
-                    <a href="index.html#portfolio" class="back-link"><i class="ph ph-arrow-left"></i> Back to
-                        Portfolio</a>
+                    <!-- Back Navigation Removed -->
                 </div>
                 <h1>Product Enhancement</h1>
                 <p>Instagram Enhancement</p>
@@ -488,10 +487,215 @@
                     </div>
                 </div>
 
-                <div class="assets-section">
-                    <h2>Color Palette</h2>
-                    <div class="assets-container">
-                        <img src="/Palette.png" alt="Color Palette" class="asset-img">
+                <h2 style="margin-top: 5rem;">Color Palette</h2>
+                <p style="color: var(--clr-text-muted); font-size: 1.125rem; line-height: 1.6; margin-bottom: 2rem;">A refined color system integrating Instagram's vibrant brand identity with clean, modern UI tokens designed for focus and mindfulness.</p>
+
+                <style>
+                    /* Premium Color Showcase Styles */
+                    .insta-colors-showcase {
+                        position: relative;
+                        margin-top: 2rem;
+                        padding: 4rem 2.5rem;
+                        border-radius: 24px;
+                        background: linear-gradient(145deg, var(--clr-surface-light) 0%, var(--clr-surface) 100%);
+                        overflow: hidden;
+                        border: 1px solid var(--clr-border);
+                        box-shadow: 0 20px 40px -10px rgba(0,0,0,0.05);
+                        z-index: 1;
+                    }
+
+                    .insta-mesh-bg {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: radial-gradient(circle at 0% 0%, rgba(221, 42, 123, 0.03) 0%, transparent 40%),
+                                    radial-gradient(circle at 100% 100%, rgba(0, 149, 246, 0.03) 0%, transparent 40%);
+                        z-index: -1;
+                    }
+
+                    .insta-color-group {
+                        margin-bottom: 4rem;
+                    }
+
+                    .insta-color-group:last-child {
+                        margin-bottom: 0;
+                    }
+
+                    .insta-group-title {
+                        font-size: 1.25rem;
+                        font-weight: 700;
+                        color: var(--clr-text-main);
+                        margin-bottom: 1.5rem;
+                        display: flex;
+                        align-items: center;
+                        gap: 0.5rem;
+                    }
+
+                    .insta-color-grid {
+                        display: grid;
+                        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                        gap: 1.5rem;
+                    }
+
+                    .insta-color-card {
+                        background: var(--clr-surface);
+                        border-radius: 16px;
+                        padding: 1.25rem;
+                        border: 1px solid var(--clr-border);
+                        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    }
+
+                    .insta-color-card:hover {
+                        transform: translateY(-5px);
+                        box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+                    }
+
+                    .insta-color-swatch {
+                        width: 100%;
+                        height: 120px;
+                        border-radius: 12px;
+                        margin-bottom: 1rem;
+                        position: relative;
+                        overflow: hidden;
+                    }
+
+                    /* Brand Gradient Special Swatch */
+                    .swatch-gradient {
+                        background: radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%), 
+                                    radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%), 
+                                    radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%), 
+                                    radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%), 
+                                    radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%), 
+                                    radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%), 
+                                    radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent), 
+                                    linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%);
+                    }
+
+                    .insta-color-details {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.25rem;
+                    }
+
+                    .insta-color-name {
+                        font-weight: 600;
+                        color: var(--clr-text-main);
+                        font-size: 1.05rem;
+                    }
+
+                    .insta-color-hex {
+                        font-family: monospace;
+                        color: var(--clr-text-muted);
+                        font-size: 0.9rem;
+                    }
+
+                    .insta-color-tag {
+                        display: inline-block;
+                        padding: 0.2rem 0.6rem;
+                        border-radius: 4px;
+                        font-size: 0.75rem;
+                        font-weight: 600;
+                        margin-top: 0.5rem;
+                        width: fit-content;
+                    }
+
+                    .tag-brand { background: rgba(221, 42, 123, 0.1); color: #DD2A7B; }
+                    .tag-action { background: rgba(0, 149, 246, 0.1); color: #0095F6; }
+                    .tag-danger { background: rgba(237, 73, 86, 0.1); color: #ED4956; }
+                    .tag-neutral { background: rgba(142, 142, 142, 0.1); color: #8E8E8E; }
+
+                </style>
+
+                <div class="insta-colors-showcase fade-up">
+                    <div class="insta-mesh-bg"></div>
+                    
+                    <!-- Brand & Accent -->
+                    <div class="insta-color-group">
+                        <h3 class="insta-group-title"><i class="ph-fill ph-aperture"></i> Brand & Interactive</h3>
+                        <div class="insta-color-grid">
+                            <div class="insta-color-card">
+                                <div class="insta-color-swatch" style="background-color: #F500C8;"></div>
+                                <div class="insta-color-details">
+                                    <div class="insta-color-name">Brand Magenta</div>
+                                    <div class="insta-color-hex">#F500C8</div>
+                                    <span class="insta-color-tag" style="background: rgba(245, 0, 200, 0.1); color: #F500C8;">Identity</span>
+                                </div>
+                            </div>
+                            <div class="insta-color-card">
+                                <div class="insta-color-swatch" style="background-color: #FF0000;"></div>
+                                <div class="insta-color-details">
+                                    <div class="insta-color-name">Brand Red</div>
+                                    <div class="insta-color-hex">#FF0000</div>
+                                    <span class="insta-color-tag" style="background: rgba(255, 0, 0, 0.1); color: #FF0000;">Identity</span>
+                                </div>
+                            </div>
+                            <div class="insta-color-card">
+                                <div class="insta-color-swatch" style="background-color: #C5690E;"></div>
+                                <div class="insta-color-details">
+                                    <div class="insta-color-name">Brand Rust</div>
+                                    <div class="insta-color-hex">#C5690E</div>
+                                    <span class="insta-color-tag" style="background: rgba(197, 105, 14, 0.1); color: #C5690E;">Identity</span>
+                                </div>
+                            </div>
+                            <div class="insta-color-card">
+                                <div class="insta-color-swatch" style="background-color: #FF7F00;"></div>
+                                <div class="insta-color-details">
+                                    <div class="insta-color-name">Brand Orange</div>
+                                    <div class="insta-color-hex">#FF7F00</div>
+                                    <span class="insta-color-tag" style="background: rgba(255, 127, 0, 0.1); color: #FF7F00;">Identity</span>
+                                </div>
+                            </div>
+                            <div class="insta-color-card">
+                                <div class="insta-color-swatch" style="background-color: #FFCA00;"></div>
+                                <div class="insta-color-details">
+                                    <div class="insta-color-name">Brand Yellow</div>
+                                    <div class="insta-color-hex">#FFCA00</div>
+                                    <span class="insta-color-tag" style="background: rgba(255, 202, 0, 0.1); color: #FFCA00;">Identity</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Neutrals -->
+                    <div class="insta-color-group">
+                        <h3 class="insta-group-title"><i class="ph-fill ph-swatches"></i> Core UI & Typography</h3>
+                        <div class="insta-color-grid">
+                            <div class="insta-color-card">
+                                <div class="insta-color-swatch" style="background-color: #262626;"></div>
+                                <div class="insta-color-details">
+                                    <div class="insta-color-name">Dark Text</div>
+                                    <div class="insta-color-hex">#262626</div>
+                                    <span class="insta-color-tag tag-neutral">Headings / Body</span>
+                                </div>
+                            </div>
+                            <div class="insta-color-card">
+                                <div class="insta-color-swatch" style="background-color: #8E8E8E;"></div>
+                                <div class="insta-color-details">
+                                    <div class="insta-color-name">Muted Text</div>
+                                    <div class="insta-color-hex">#8E8E8E</div>
+                                    <span class="insta-color-tag tag-neutral">Secondary Info</span>
+                                </div>
+                            </div>
+                            <div class="insta-color-card">
+                                <div class="insta-color-swatch" style="background-color: #DBDBDB; border: 1px solid var(--clr-border);"></div>
+                                <div class="insta-color-details">
+                                    <div class="insta-color-name">Divider</div>
+                                    <div class="insta-color-hex">#DBDBDB</div>
+                                    <span class="insta-color-tag tag-neutral">Borders / Lines</span>
+                                </div>
+                            </div>
+                            <div class="insta-color-card">
+                                <div class="insta-color-swatch" style="background-color: #FAFAFA; border: 1px solid var(--clr-border);"></div>
+                                <div class="insta-color-details">
+                                    <div class="insta-color-name">Background</div>
+                                    <div class="insta-color-hex">#FAFAFA</div>
+                                    <span class="insta-color-tag tag-neutral">App Base</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -502,6 +706,12 @@
                     </div>
                     <h2 class="closing-title">Thanks for Viewing ✨</h2>
                     <p class="closing-subtitle">Feel free to explore more of my work or get in touch.</p>
+                </div>
+
+                <!-- Project Navigation -->
+                <div class="project-navigation fade-up" style="display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--clr-border);">
+                    <a href="go-book.html" style="display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid var(--clr-border); padding: 0.75rem 1.5rem; border-radius: 99px; font-weight: 600; color: var(--clr-text-main); transition: all 0.3s ease; background: var(--clr-surface);" onmouseover="this.style.background='var(--clr-surface-light)'; this.style.borderColor='var(--clr-primary)';" onmouseout="this.style.background='var(--clr-surface)'; this.style.borderColor='var(--clr-border)';"><i class="ph ph-arrow-left"></i> Previous Project</a>
+                    <a href="smart-home.html" style="display: inline-flex; align-items: center; gap: 0.5rem; background-color: var(--clr-primary); color: white; padding: 0.75rem 1.5rem; border-radius: 99px; font-weight: 600; transition: all 0.3s ease; border: 1px solid var(--clr-primary);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 10px 15px -3px rgba(37, 99, 235, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">Next Project <i class="ph ph-arrow-right"></i></a>
                 </div>
             </div>
         </section>
