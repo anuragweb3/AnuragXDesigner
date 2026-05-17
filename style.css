@@ -171,6 +171,21 @@ h1, h2, h3, h4 {
     transform: scale(1.05);
 }
 
+.mobile-menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--clr-text-main);
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-left: var(--space-md);
+    transition: var(--transition-fast);
+}
+
+.mobile-menu-toggle:hover {
+    color: var(--clr-primary);
+}
+
 .nav-links a {
     font-size: 0.9rem;
     font-weight: 500;
@@ -968,7 +983,35 @@ h1, h2, h3, h4 {
 }
 
 @media (max-width: 768px) {
-    .nav-links { display: none; } /* Simple mobile hide for now, could add hamburger */
+    .mobile-menu-toggle { display: block; }
+    
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--clr-surface);
+        padding: var(--space-md) var(--space-lg);
+        box-shadow: var(--shadow-sm);
+        border-top: 1px solid var(--clr-border);
+        gap: var(--space-md);
+    }
+    
+    .nav-links.active {
+        display: flex;
+    }
+    
+    .nav-links a {
+        font-size: 1.1rem;
+        padding: var(--space-sm) 0;
+        border-bottom: 1px solid var(--clr-border);
+    }
+    
+    .nav-links a:last-child {
+        border-bottom: none;
+    }
     .hero-title { font-size: 3rem; }
     .intro-text { font-size: 1.25rem; }
     .timeline::before { left: 15px; }
@@ -978,6 +1021,23 @@ h1, h2, h3, h4 {
         flex-direction: column;
         text-align: center;
     }
+}
+
+@media (max-width: 480px) {
+    .hero-title { font-size: 2.5rem; }
+    .hero-subtitle { font-size: 1.1rem; }
+    .hero-description { font-size: 1rem; }
+    .stat-value { font-size: 1.5rem; }
+    .btn { padding: 0.75rem 1.5rem; font-size: 0.95rem; width: 100%; }
+    .section { padding: var(--space-lg) 0; }
+    .section-title { font-size: 1.75rem; margin-bottom: var(--space-lg); }
+    .closing-title { font-size: 1.8rem; }
+    .hero-stats { gap: 1rem; justify-content: center; }
+    .stat-item { flex-direction: column; gap: 4px; text-align: center; }
+    .stat-divider { display: none; }
+    .hero-actions { display: flex; flex-direction: column; width: 100%; }
+    .contact-wrapper { padding: var(--space-md); }
+    .project-grid { grid-template-columns: 1fr; }
 }
  
  / *   P r e m i u m   H e r o   C u s t o m   S t y l e s   a d d e d   f o r   G o   B o o k   * /  

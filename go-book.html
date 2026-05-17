@@ -1070,6 +1070,20 @@
                 flex-shrink: 0;
             }
         }
+
+        @media (max-width: 480px) {
+            .hero-title { font-size: 2.2rem !important; }
+            .hero-subtitle { font-size: 1.2rem !important; }
+            .hero-visuals { height: 250px !important; transform: scale(0.6) !important; margin-top: -3rem !important; }
+            .color-grid { grid-template-columns: 1fr !important; }
+            .journey-block { flex-direction: column !important; padding: 1.5rem !important; gap: 2rem !important; }
+            .solution-card { flex-direction: column !important; padding: 1.5rem !important; gap: 2rem !important; }
+            .project-navigation { flex-direction: column !important; gap: 1rem !important; align-items: stretch !important; }
+            .project-navigation a { text-align: center !important; justify-content: center !important; }
+            .goals-showcase::before { left: 16px !important; }
+            .goal-card { flex-direction: column !important; align-items: flex-start !important; padding-left: 3rem !important; }
+            .goal-connector { left: 0 !important; width: 24px !important; height: 24px !important; }
+        }
     </style>
 </head>
 
@@ -1087,6 +1101,9 @@
             <div class="theme-toggle-container">
                 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
                     <i class="ph ph-moon"></i>
+                </button>
+                <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle Mobile Menu">
+                    <i class="ph ph-list"></i>
                 </button>
             </div>
         </div>

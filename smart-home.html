@@ -55,6 +55,19 @@
         .back-link:hover {
             transform: translateX(-5px);
         }
+
+        @media (max-width: 480px) {
+            .nda-title { font-size: 2.2rem !important; }
+            .nda-subtitle { font-size: 1.2rem !important; }
+            .nda-description { font-size: 1rem !important; }
+            .nda-abstract-ui { height: 350px !important; transform: scale(0.8); }
+            .case-study-grid.two-cols { grid-template-columns: 1fr !important; }
+            .modules-grid { grid-template-columns: 1fr !important; }
+            .challenges-grid { grid-template-columns: 1fr !important; }
+            .project-navigation { flex-direction: column !important; gap: 1rem !important; align-items: stretch !important; }
+            .project-navigation a { text-align: center !important; justify-content: center !important; }
+            .section-title { font-size: 1.8rem !important; }
+        }
     </style>
 </head>
 <body>
@@ -71,6 +84,9 @@
             <div class="theme-toggle-container">
                 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
                     <i class="ph ph-moon"></i>
+                </button>
+                <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle Mobile Menu">
+                    <i class="ph ph-list"></i>
                 </button>
             </div>
         </div>
