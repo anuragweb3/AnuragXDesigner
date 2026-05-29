@@ -45,31 +45,21 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.disabled = true;
             
             try {
-                const response = await fetch('https://formsubmit.co/ajax/gupta.anurag.8400@gmail.com', {
-                    method: 'POST',
-                    headers: { 
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({ 
-                        name, 
-                        email, 
-                        message,
-                        _replyto: email
-                    })
-                });
+                // TODO: Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with actual EmailJS IDs
+                // Make sure your EmailJS template uses {{name}}, {{email}}, and {{message}} variables
+                // and has the Reply-To field set to {{email}}.
+                const serviceID = 'YOUR_SERVICE_ID';
+                const templateID = 'YOUR_TEMPLATE_ID';
+
+                await emailjs.sendForm(serviceID, templateID, form);
                 
-                if (response.ok) {
-                    statusDiv.style.display = 'block';
-                    statusDiv.style.backgroundColor = '#dcfce7';
-                    statusDiv.style.color = '#22c55e';
-                    statusDiv.textContent = 'Message sent successfully!';
-                    form.reset();
-                    btn.textContent = 'Message Sent!';
-                    btn.style.backgroundColor = '#4ade80';
-                } else {
-                    throw new Error('Failed to send');
-                }
+                statusDiv.style.display = 'block';
+                statusDiv.style.backgroundColor = '#dcfce7';
+                statusDiv.style.color = '#22c55e';
+                statusDiv.textContent = 'Message sent successfully!';
+                form.reset();
+                btn.textContent = 'Message Sent!';
+                btn.style.backgroundColor = '#4ade80';
             } catch (error) {
                 statusDiv.style.display = 'block';
                 statusDiv.style.backgroundColor = '#fee2e2';
