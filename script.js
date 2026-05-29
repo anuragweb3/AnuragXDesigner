@@ -1,12 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('.navbar');
+    let isScrolling = false;
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
+        if (!isScrolling) {
+            window.requestAnimationFrame(() => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+                isScrolling = false;
+            });
+            isScrolling = true;
         }
-    });
+    }, { passive: true });
 
     const observerOptions = { root: null, rootMargin: '0px', threshold: 0 };
     const observer = new IntersectionObserver((entries, observer) => {

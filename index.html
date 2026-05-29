@@ -11,11 +11,16 @@
     <meta http-equiv="Cache-control" content="public, max-age=31536000">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Preload critical fonts -->
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor icons: critical for hero viewport -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-</head>
+    
+    <!-- Defer FontAwesome as it is only used in footer -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 <body>
     <!-- Navbar -->
     <header class="navbar">
@@ -167,7 +172,7 @@
                     <!-- Project 1 -->
                     <a href="go-book.html" class="project-card fade-up">
                         <div class="project-image-wrapper">
-                            <img loading="lazy" decoding="async" src="go_book_marketplace1.webp" alt="GeM CMS Dashboard" class="project-image">
+                            <img src="go_book_marketplace1.webp" alt="GeM CMS Dashboard" class="project-image" width="400" height="300" fetchpriority="high">
                             <div class="project-overlay">
                                 <i class="ph ph-arrow-up-right"></i>
                             </div>
@@ -180,7 +185,7 @@
                     <!-- Project 2 -->
                     <a href="instagram-enhancement.html" class="project-card fade-up" style="transition-delay: 0.1s;">
                         <div class="project-image-wrapper">
-                            <img loading="lazy" decoding="async" src="InstaCover.webp" alt="Fintech Mobile App" class="project-image">
+                            <img loading="lazy" decoding="async" src="InstaCover.webp" alt="Fintech Mobile App" class="project-image" width="400" height="300">
                             <div class="project-overlay">
                                 <i class="ph ph-arrow-up-right"></i>
                             </div>
@@ -193,7 +198,7 @@
                     <!-- Project 3 -->
                     <a href="smart-home.html" class="project-card fade-up" style="transition-delay: 0.2s;">
                         <div class="project-image-wrapper">
-                            <img loading="lazy" decoding="async" src="gem_nda_thumbnail.webp" alt="Government e-Marketplace" class="project-image">
+                            <img loading="lazy" decoding="async" src="gem_nda_thumbnail.webp" alt="Government e-Marketplace" class="project-image" width="400" height="300">
                             <div class="project-overlay">
                                 <i class="ph ph-arrow-up-right"></i>
                             </div>
