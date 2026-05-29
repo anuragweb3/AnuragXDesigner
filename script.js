@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Header Scroll Effect
     const header = document.querySelector('.navbar');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
@@ -9,18 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Scroll Animations
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0
-    };
-
+    const observerOptions = { root: null, rootMargin: '0px', threshold: 0 };
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                observer.unobserve(entry.target); // Optional: Stop observing once visible
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
@@ -28,37 +21,80 @@ document.addEventListener('DOMContentLoaded', () => {
     const fadeElements = document.querySelectorAll('.fade-up');
     fadeElements.forEach(el => observer.observe(el));
 
-    // Form Handling
     const form = document.getElementById('contact-form');
     if (form) {
-        form.addEventListener('submit', (e) => {
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = form.querySelector('button');
+            const statusDiv = document.getElementById('form-status');
             const originalText = btn.textContent;
-            btn.textContent = 'Message Sent!';
-            btn.style.backgroundColor = '#4ade80'; // Success green
             
-            setTimeout(() => {
-                form.reset();
+            const name = form.name.value.trim();
+            const email = form.email.value.trim();
+            const message = form.message.value.trim();
+            
+            if (!name || !email || !message) {
+                statusDiv.style.display = 'block';
+                statusDiv.style.backgroundColor = '#fee2e2';
+                statusDiv.style.color = '#ef4444';
+                statusDiv.textContent = 'Please fill out all fields.';
+                return;
+            }
+            
+            btn.textContent = 'Sending...';
+            btn.disabled = true;
+            
+            try {
+                const response = await fetch('https://formsubmit.co/ajax/gupta.anurag.8400@gmail.com', {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({ 
+                        name, 
+                        email, 
+                        message,
+                        _replyto: email
+                    })
+                });
+                
+                if (response.ok) {
+                    statusDiv.style.display = 'block';
+                    statusDiv.style.backgroundColor = '#dcfce7';
+                    statusDiv.style.color = '#22c55e';
+                    statusDiv.textContent = 'Message sent successfully!';
+                    form.reset();
+                    btn.textContent = 'Message Sent!';
+                    btn.style.backgroundColor = '#4ade80';
+                } else {
+                    throw new Error('Failed to send');
+                }
+            } catch (error) {
+                statusDiv.style.display = 'block';
+                statusDiv.style.backgroundColor = '#fee2e2';
+                statusDiv.style.color = '#ef4444';
+                statusDiv.textContent = 'Failed to send message. Please try again.';
                 btn.textContent = originalText;
                 btn.style.backgroundColor = '';
-            }, 3000);
+            } finally {
+                setTimeout(() => {
+                    statusDiv.style.display = 'none';
+                    btn.textContent = originalText;
+                    btn.style.backgroundColor = '';
+                    btn.disabled = false;
+                }, 5000);
+            }
         });
     }
 
-    // Theme Toggle Logic
     const themeToggleBtn = document.getElementById('theme-toggle');
     const themeIcon = themeToggleBtn ? themeToggleBtn.querySelector('i') : null;
-
-    // Check for saved theme
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
         document.documentElement.setAttribute('data-theme', 'dark');
-        if (themeIcon) {
-            themeIcon.classList.replace('ph-moon', 'ph-sun');
-        }
+        if (themeIcon) { themeIcon.classList.replace('ph-moon', 'ph-sun'); }
     }
-
     if (themeToggleBtn) {
         themeToggleBtn.addEventListener('click', () => {
             const currentTheme = document.documentElement.getAttribute('data-theme');
@@ -74,10 +110,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Mobile Menu Logic
     const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-    
     if (mobileMenuToggle && navLinks) {
         mobileMenuToggle.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -89,8 +123,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 icon.classList.replace('ph-x', 'ph-list');
             }
         });
-
-        // Close menu when clicking a link
         const navItems = navLinks.querySelectorAll('a');
         navItems.forEach(item => {
             item.addEventListener('click', () => {
@@ -101,8 +133,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
-
-        // Close menu when clicking outside
         document.addEventListener('click', (e) => {
             if (navLinks.classList.contains('active') && !navLinks.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
                 navLinks.classList.remove('active');

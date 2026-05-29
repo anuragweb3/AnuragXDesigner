@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Details - Anurag Gupta</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta http-equiv="Cache-control" content="public, max-age=31536000">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
@@ -747,10 +753,7 @@
         .glass-panel:nth-child(2) { animation-delay: -2s; }
         .glass-panel:nth-child(3) { animation-delay: -4s; }
 
-        @keyframes float-panel {
-            0% { margin-top: 0; }
-            100% { margin-top: 20px; }
-        }
+        @keyframes float-panel { 0% { transform: translateY(0); } 100% { transform: translateY(20px); } }
 
         /* Solution Storytelling Styles */
         .solution-showcase {
@@ -1375,7 +1378,7 @@
                     <div
                         style="background: var(--clr-surface-light); padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
                         <div style="text-align: center; margin-bottom: 1.5rem;">
-                            <img src="persona_student.png" alt="Natasha"
+                            <img loading="lazy" decoding="async" src="persona_student.webp" alt="Natasha"
                                 style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin: 0 auto 1rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);">
                             <h3 style="margin-bottom: 0.25rem; color: var(--clr-text-main); font-size: 1.25rem;">Natasha
                             </h3>
@@ -1394,7 +1397,7 @@
                     <div
                         style="background: var(--clr-surface-light); padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
                         <div style="text-align: center; margin-bottom: 1.5rem;">
-                            <img src="persona_designer.png" alt="Rahul"
+                            <img loading="lazy" decoding="async" src="persona_designer.webp" alt="Rahul"
                                 style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin: 0 auto 1rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);">
                             <h3 style="margin-bottom: 0.25rem; color: var(--clr-text-main); font-size: 1.25rem;">Rahul
                             </h3>
@@ -1413,7 +1416,7 @@
                     <div
                         style="background: var(--clr-surface-light); padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
                         <div style="text-align: center; margin-bottom: 1.5rem;">
-                            <img src="persona_seller.png" alt="Amit"
+                            <img loading="lazy" decoding="async" src="persona_seller.webp" alt="Amit"
                                 style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin: 0 auto 1rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);">
                             <h3 style="margin-bottom: 0.25rem; color: var(--clr-text-main); font-size: 1.25rem;">Amit
                             </h3>
@@ -1702,11 +1705,11 @@
                     style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
                     <div
                         style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid var(--clr-surface-dark);">
-                        <img src="/wire1.jpeg" alt="Wireframe 1" style="width: 100%; height: auto; display: block;">
+                        <img loading="lazy" decoding="async" src="/wire1.webp" alt="Wireframe 1" style="width: 100%; height: auto; display: block;">
                     </div>
                     <div
                         style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid var(--clr-surface-dark);">
-                        <img src="/wire2.jpeg" alt="Wireframe 2" style="width: 100%; height: auto; display: block;">
+                        <img loading="lazy" decoding="async" src="/wire2.webp" alt="Wireframe 2" style="width: 100%; height: auto; display: block;">
                     </div>
                 </div>
 
@@ -1714,15 +1717,15 @@
                     style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
                     <div
                         style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid var(--clr-surface-dark);">
-                        <img src="/wire3.jpeg" alt="Wireframe 3" style="width: 100%; height: auto; display: block;">
+                        <img loading="lazy" decoding="async" src="/wire3.webp" alt="Wireframe 3" style="width: 100%; height: auto; display: block;">
                     </div>
                     <div
                         style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid var(--clr-surface-dark);">
-                        <img src="/wire4.jpeg" alt="Wireframe 4" style="width: 100%; height: auto; display: block;">
+                        <img loading="lazy" decoding="async" src="/wire4.webp" alt="Wireframe 4" style="width: 100%; height: auto; display: block;">
                     </div>
                     <div
                         style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid var(--clr-surface-dark);">
-                        <img src="/wire5.jpeg" alt="Wireframe 5" style="width: 100%; height: auto; display: block;">
+                        <img loading="lazy" decoding="async" src="/wire5.webp" alt="Wireframe 5" style="width: 100%; height: auto; display: block;">
                     </div>
                 </div>
 
@@ -1730,11 +1733,11 @@
                     style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
                     <div
                         style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid var(--clr-surface-dark);">
-                        <img src="/wire6.jpeg" alt="Wireframe 6" style="width: 100%; height: auto; display: block;">
+                        <img loading="lazy" decoding="async" src="/wire6.webp" alt="Wireframe 6" style="width: 100%; height: auto; display: block;">
                     </div>
                     <div
                         style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid var(--clr-surface-dark);">
-                        <img src="/wire7.jpeg" alt="Wireframe 7" style="width: 100%; height: auto; display: block;">
+                        <img loading="lazy" decoding="async" src="/wire7.webp" alt="Wireframe 7" style="width: 100%; height: auto; display: block;">
                     </div>
                 </div>
 
@@ -1783,7 +1786,7 @@
 
                 <div class="zigzag-row">
                     <div class="zigzag-image">
-                        <img src="/Device1.png" alt="Book Marketplace"
+                        <img loading="lazy" decoding="async" src="/Device1.webp" alt="Book Marketplace"
                             style="width: 100%; height: auto; display: block;">
                     </div>
                     <div class="zigzag-content">
@@ -1794,7 +1797,7 @@
 
                 <div class="zigzag-row">
                     <div class="zigzag-image">
-                        <img src="/Device2.png" alt="Admin Dashboard"
+                        <img loading="lazy" decoding="async" src="/Device2.webp" alt="Admin Dashboard"
                             style="width: 100%; height: auto; display: block;">
                     </div>
                     <div class="zigzag-content">
@@ -1805,7 +1808,7 @@
 
                 <div class="zigzag-row">
                     <div class="zigzag-image">
-                        <img src="/Device3.png" alt="Book Detailed preview"
+                        <img loading="lazy" decoding="async" src="/Device3.webp" alt="Book Detailed preview"
                             style="width: 100%; height: auto; display: block;">
                     </div>
                     <div class="zigzag-content">
@@ -1816,7 +1819,7 @@
 
                 <div class="zigzag-row">
                     <div class="zigzag-image">
-                        <img src="/Device4.png" alt="Vendor Dashboard"
+                        <img loading="lazy" decoding="async" src="/Device4.webp" alt="Vendor Dashboard"
                             style="width: 100%; height: auto; display: block;">
                     </div>
                     <div class="zigzag-content">
@@ -1827,7 +1830,7 @@
 
                 <div class="zigzag-row">
                     <div class="zigzag-image">
-                        <img src="/Device5.png" alt="User Request Preview"
+                        <img loading="lazy" decoding="async" src="/Device5.webp" alt="User Request Preview"
                             style="width: 100%; height: auto; display: block;">
                     </div>
                     <div class="zigzag-content">
@@ -1841,7 +1844,7 @@
 
                 <div class="zigzag-row">
                     <div class="zigzag-image">
-                        <img src="/Device6.png" alt="Book Catalog creation form"
+                        <img loading="lazy" decoding="async" src="/Device6.webp" alt="Book Catalog creation form"
                             style="width: 100%; height: auto; display: block;">
                     </div>
                     <div class="zigzag-content">
@@ -1915,61 +1918,61 @@
                 <div class="components-grid fade-up">
                     <div class="component-item col-span-2">
                         <div class="component-img-container">
-                            <img src="Book Card.png" alt="Book Card component">
+                            <img loading="lazy" decoding="async" src="Book Card.webp" alt="Book Card component">
                         </div>
                         <span class="component-title">Book Card</span>
                     </div>
                     <div class="component-item col-span-2">
                         <div class="component-img-container">
-                            <img src="Modal.png" alt="Modal component">
+                            <img loading="lazy" decoding="async" src="Modal.webp" alt="Modal component">
                         </div>
                         <span class="component-title">Modal</span>
                     </div>
                     <div class="component-item col-span-2">
                         <div class="component-img-container">
-                            <img src="Tabel Cell.png" alt="Table Cell component">
+                            <img loading="lazy" decoding="async" src="Tabel Cell.webp" alt="Table Cell component">
                         </div>
                         <span class="component-title">Table Cell</span>
                     </div>
                     <div class="component-item">
                         <div class="component-img-container">
-                            <img src="Upload Image.png" alt="Upload Image component">
+                            <img loading="lazy" decoding="async" src="Upload Image.webp" alt="Upload Image component">
                         </div>
                         <span class="component-title">Upload Image</span>
                     </div>
                     <div class="component-item">
                         <div class="component-img-container">
-                            <img src="InputField.png" alt="InputField component">
+                            <img loading="lazy" decoding="async" src="InputField.webp" alt="InputField component">
                         </div>
                         <span class="component-title">Input Field</span>
                     </div>
                     <div class="component-item">
                         <div class="component-img-container">
-                            <img src="Button.png" alt="Button component">
+                            <img loading="lazy" decoding="async" src="Button.webp" alt="Button component">
                         </div>
                         <span class="component-title">Button</span>
                     </div>
                     <div class="component-item">
                         <div class="component-img-container">
-                            <img src="Pagination.png" alt="Pagination component">
+                            <img loading="lazy" decoding="async" src="Pagination.webp" alt="Pagination component">
                         </div>
                         <span class="component-title">Pagination</span>
                     </div>
                     <div class="component-item">
                         <div class="component-img-container">
-                            <img src="Checkbox.png" alt="Checkbox component">
+                            <img loading="lazy" decoding="async" src="Checkbox.webp" alt="Checkbox component">
                         </div>
                         <span class="component-title">Checkbox</span>
                     </div>
                     <div class="component-item">
                         <div class="component-img-container">
-                            <img src="RadioButton.png" alt="Radio Button component">
+                            <img loading="lazy" decoding="async" src="RadioButton.webp" alt="Radio Button component">
                         </div>
                         <span class="component-title">Radio Button</span>
                     </div>
                     <div class="component-item">
                         <div class="component-img-container">
-                            <img src="Status.png" alt="Status component">
+                            <img loading="lazy" decoding="async" src="Status.webp" alt="Status component">
                         </div>
                         <span class="component-title">Status</span>
                     </div>
@@ -2137,7 +2140,7 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 
 </html>

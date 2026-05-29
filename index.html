@@ -6,8 +6,15 @@
     <title>Anurag Gupta - UI/UX Designer</title>
     <meta name="description" content="Portfolio of Anurag Gupta, UI/UX Designer & Creative Thinker.">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta http-equiv="Cache-control" content="public, max-age=31536000">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
     <!-- Navbar -->
@@ -160,7 +167,7 @@
                     <!-- Project 1 -->
                     <a href="go-book.html" class="project-card fade-up">
                         <div class="project-image-wrapper">
-                            <img src="go_book_marketplace1.png" alt="GeM CMS Dashboard" class="project-image">
+                            <img loading="lazy" decoding="async" src="go_book_marketplace1.webp" alt="GeM CMS Dashboard" class="project-image">
                             <div class="project-overlay">
                                 <i class="ph ph-arrow-up-right"></i>
                             </div>
@@ -173,7 +180,7 @@
                     <!-- Project 2 -->
                     <a href="instagram-enhancement.html" class="project-card fade-up" style="transition-delay: 0.1s;">
                         <div class="project-image-wrapper">
-                            <img src="InstaCover.png" alt="Fintech Mobile App" class="project-image">
+                            <img loading="lazy" decoding="async" src="InstaCover.webp" alt="Fintech Mobile App" class="project-image">
                             <div class="project-overlay">
                                 <i class="ph ph-arrow-up-right"></i>
                             </div>
@@ -186,7 +193,7 @@
                     <!-- Project 3 -->
                     <a href="smart-home.html" class="project-card fade-up" style="transition-delay: 0.2s;">
                         <div class="project-image-wrapper">
-                            <img src="gem_nda_thumbnail.png" alt="Government e-Marketplace" class="project-image">
+                            <img loading="lazy" decoding="async" src="gem_nda_thumbnail.webp" alt="Government e-Marketplace" class="project-image">
                             <div class="project-overlay">
                                 <i class="ph ph-arrow-up-right"></i>
                             </div>
@@ -243,17 +250,18 @@
                 <h2 class="section-title">Contact Me</h2>
                 <div class="contact-wrapper">
                     <form id="contact-form" class="contact-form">
+                        <div id="form-status" style="display: none; padding: 10px; border-radius: var(--radius-sm); margin-bottom: var(--space-md); font-weight: 500; font-size: 0.9rem;"></div>
                         <div class="input-group">
                             <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required placeholder="John Doe">
+                            <input type="text" id="name" name="name" required placeholder="Enter name">
                         </div>
                         <div class="input-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required placeholder="john@example.com">
+                            <input type="email" id="email" name="email" required placeholder="Enter email">
                         </div>
                         <div class="input-group">
                             <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" required placeholder="Let's build something amazing together..."></textarea>
+                            <textarea id="message" name="message" rows="5" required placeholder="Enter message"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Send Message</button>
                     </form>
@@ -261,9 +269,9 @@
                         <h3>Let's Connect</h3>
                         <p>Feel free to reach out for collaborations or just a friendly hello.</p>
                         <div class="social-links">
-                            <a href="#" class="social-icon" aria-label="LinkedIn"><i class="ph ph-linkedin-logo"></i></a>
-                            <a href="#" class="social-icon" aria-label="Behance"><i class="ph ph-behance-logo"></i></a>
-                            <a href="#" class="social-icon" aria-label="Dribbble"><i class="ph ph-dribbble-logo"></i></a>
+                            <a href="https://www.linkedin.com/in/rag3" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                            <a href="https://www.behance.net/anuraggupta36" target="_blank" class="social-icon" aria-label="Behance"><i class="fa-brands fa-behance"></i></a>
+                            <a href="https://www.instagram.com/montu_bunny/" target="_blank" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -281,6 +289,6 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
