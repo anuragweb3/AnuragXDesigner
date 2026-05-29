@@ -45,11 +45,9 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.disabled = true;
             
             try {
-                // TODO: Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with actual EmailJS IDs
-                // Make sure your EmailJS template uses {{name}}, {{email}}, and {{message}} variables
-                // and has the Reply-To field set to {{email}}.
-                const serviceID = 'YOUR_SERVICE_ID';
-                const templateID = 'YOUR_TEMPLATE_ID';
+                // EmailJS service and template IDs
+                const serviceID = 'service_lrsuyda';
+                const templateID = 'template_le40ozk';
 
                 await emailjs.sendForm(serviceID, templateID, form);
                 
